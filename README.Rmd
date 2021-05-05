@@ -1,0 +1,61 @@
+---
+title: "Supplementary materials for Life of /p/"
+author: "Steven Moran and Adriano Lameira\n"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: github_document
+---
+
+```{r, message=F, warning=F}
+library(tidyverse)
+```
+
+```{r}
+phoible <- read_csv(url("https://github.com/phoible/dev/blob/646f5e4f64bfefb7868bf4a3b65bcd1da243976a/data/phoible.csv?raw=true"), 
+                    col_types = c(InventoryID = "i", Marginal = "l", .default = "c"))
+```
+
+How many inventories are there in PHOIBLE?
+
+```{r}
+nrow(phoible %>% select(InventoryID) %>% distinct())
+```
+
+How many ISO codes (languages)?
+
+```{r}
+nrow(phoible %>% select(ISO6393) %>% distinct())
+```
+
+Let's get all rows with phonemes that are "p" like.
+
+```{r}
+df <- phoible %>% filter(grepl("p", Phoneme))
+```
+
+What are they?
+
+```{r}
+ps <- df %>% select(Phoneme) %>% distinct()
+ps <- df %>% select(Phoneme) %>% group_by(Phoneme) %>% summarize(count = n()) %>% arrange(desc(count))
+```
+
+
+
+What about BDPROTO? 
+
+* https://en.wikipedia.org/wiki/Voiceless_bilabial_plosive
+
+"The stop [p] is missing from about 10% of languages that have a [b]. (See voiced velar stop for another such gap.) This is an areal feature of the "circum-Saharan zone" (Africa north of the equator, including the Arabian peninsula). It is not known how old this areal feature is, and whether it might be a recent phenomenon due to Arabic as a prestige language (Arabic lost its /p/ in prehistoric times), or whether Arabic was itself affected by a more ancient areal pattern. It is found in other areas as well; for example, in Europe, Proto-Celtic and Old Basque are both reconstructed as having [b] but no [p]."
+
+"Nonetheless, the [p] sound is very common cross-linguistically. Most languages have at least a plain [p], and some distinguish more than one variety. Many Indo-Aryan languages, such as Hindustani, have a two-way contrast between the aspirated [pʰ] and the plain [p] (also transcribed as [p˭] in extensions to the IPA)."
+
+```{r}
+bdproto <- read_csv(url('https://raw.githubusercontent.com/bdproto/bdproto/master/bdproto.csv'))
+```
+
+
+And SegBo? Is it often borrowed in areas where they do not have it?
+
+
+
+
