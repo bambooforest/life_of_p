@@ -1,0 +1,177 @@
+#NEXUS
+[R-package PHYTOOLS, Wed Jul  3 21:42:28 2019]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 82;
+	TAXLABELS
+		Adapazar<nucl1235|hye>
+		Afrikaans<afri1274|afr>
+		Ancient_Greek<anci1242|grc>
+		Arvanitika<arva1236|aat>
+		Assamese<assa1263|asm>
+		Avestan<aves1237|ave>
+		Baluchi<sout2642|bgp>
+		Belarusian<bela1254|bel>
+		Bengali<beng1280|ben>
+		Bihari<mait1250|mai>
+		Breton<bret1244|bre>
+		Bulgarian<bulg1262|bul>
+		Cagliari<camp1261|sro>
+		Catalan<stan1289|cat>
+		Classical_Armenian<clas1249|xcl>
+		Cornish<corn1251|cor>
+		Czech<czec1258|ces>
+		Danish<dani1285|dan>
+		Digor_Ossetic<osse1243|oss>
+		Dutch<dutc1256|nld>
+		Eastern_Armenian<nucl1235|hye>
+		English<stan1293|eng>
+		Faroese<faro1244|fao>
+		Flemish<vlaa1240|vls>
+		French<stan1290|fra>
+		Frisian<nort2628|frs>
+		Friulian<friu1240|fur>
+		German<stan1295|deu>
+		Gothic<goth1244|got>
+		Gujarati<guja1252|guj>
+		Hindi<hind1269|hin>
+		Hittite<hitt1242|hit>
+		Icelandic<icel1247|isl>
+		Irish<iris1253|gle>
+		Italian<ital1282|ita>
+		Kashmiri<kash1277|kas>
+		Ladin<ladi1250|lld>
+		Lahnda<west2386|pnb>
+		Latin<lati1261|lat>
+		Latvian<latv1249|lav>
+		Lithuanian<lith1251|lit>
+		Luxembourgish<luxe1241|ltz>
+		Macedonian<mace1250|mkd>
+		Marathi<mara1378|mar>
+		Modern_Greek<mode1248|ell>
+		Nepali<nepa1254|nep>
+		Norwegian<norw1259|nob>
+		Nuorese<logu1236|src>
+		Old_Church_Slavic<chur1257|chu>
+		Old_English<olde1238|ang>
+		Old_High_German<oldh1241|goh>
+		Old_Irish<oldi1245|sga>
+		Old_West_Norse<oldn1244|non>
+		Oriya<nucl1284|ori>
+		Panjabi<panj1256|pan>
+		Pashto<nort2646|pus>
+		Persian<west2369|pes>
+		Polish<poli1260|pol>
+		Portuguese<port1283|por>
+		Provencal<occi1239|prv/oci>
+		Romani<vlax1238|rmy>
+		Romanian<roma1327|ron>
+		Romansh<roma1326|roh>
+		Russian<russ1263|rus>
+		Scots_Gaelic<scot1245|gla>
+		Serbian<serb1264|srp>
+		Singhalese<sinh1246|sin>
+		Slovak<slov1269|slk>
+		Slovenian<slov1268|slv>
+		Spanish<stan1288|spa>
+		Swedish<swed1254|swe>
+		Swiss_German<swis1247|gsw>
+		Tajik<taji1245|tgk>
+		Tocharian_B<tokh1243|txb>
+		Tosk<tosk1239|als>
+		Ukrainian<ukra1253|ukr>
+		Upper_Sorbian<uppe1395|hsb>
+		Urdu<urdu1245|urd>
+		Vedic_Sanskrit<sans1269|san>
+		Walloon<wall1255|wln>
+		Waziri<cent1973|pst>
+		Welsh<wels1247|cym>
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Adapazar<nucl1235|hye>,
+		2	Afrikaans<afri1274|afr>,
+		3	Ancient_Greek<anci1242|grc>,
+		4	Arvanitika<arva1236|aat>,
+		5	Assamese<assa1263|asm>,
+		6	Avestan<aves1237|ave>,
+		7	Baluchi<sout2642|bgp>,
+		8	Belarusian<bela1254|bel>,
+		9	Bengali<beng1280|ben>,
+		10	Bihari<mait1250|mai>,
+		11	Breton<bret1244|bre>,
+		12	Bulgarian<bulg1262|bul>,
+		13	Cagliari<camp1261|sro>,
+		14	Catalan<stan1289|cat>,
+		15	Classical_Armenian<clas1249|xcl>,
+		16	Cornish<corn1251|cor>,
+		17	Czech<czec1258|ces>,
+		18	Danish<dani1285|dan>,
+		19	Digor_Ossetic<osse1243|oss>,
+		20	Dutch<dutc1256|nld>,
+		21	Eastern_Armenian<nucl1235|hye>,
+		22	English<stan1293|eng>,
+		23	Faroese<faro1244|fao>,
+		24	Flemish<vlaa1240|vls>,
+		25	French<stan1290|fra>,
+		26	Frisian<nort2628|frs>,
+		27	Friulian<friu1240|fur>,
+		28	German<stan1295|deu>,
+		29	Gothic<goth1244|got>,
+		30	Gujarati<guja1252|guj>,
+		31	Hindi<hind1269|hin>,
+		32	Hittite<hitt1242|hit>,
+		33	Icelandic<icel1247|isl>,
+		34	Irish<iris1253|gle>,
+		35	Italian<ital1282|ita>,
+		36	Kashmiri<kash1277|kas>,
+		37	Ladin<ladi1250|lld>,
+		38	Lahnda<west2386|pnb>,
+		39	Latin<lati1261|lat>,
+		40	Latvian<latv1249|lav>,
+		41	Lithuanian<lith1251|lit>,
+		42	Luxembourgish<luxe1241|ltz>,
+		43	Macedonian<mace1250|mkd>,
+		44	Marathi<mara1378|mar>,
+		45	Modern_Greek<mode1248|ell>,
+		46	Nepali<nepa1254|nep>,
+		47	Norwegian<norw1259|nob>,
+		48	Nuorese<logu1236|src>,
+		49	Old_Church_Slavic<chur1257|chu>,
+		50	Old_English<olde1238|ang>,
+		51	Old_High_German<oldh1241|goh>,
+		52	Old_Irish<oldi1245|sga>,
+		53	Old_West_Norse<oldn1244|non>,
+		54	Oriya<nucl1284|ori>,
+		55	Panjabi<panj1256|pan>,
+		56	Pashto<nort2646|pus>,
+		57	Persian<west2369|pes>,
+		58	Polish<poli1260|pol>,
+		59	Portuguese<port1283|por>,
+		60	Provencal<occi1239|prv/oci>,
+		61	Romani<vlax1238|rmy>,
+		62	Romanian<roma1327|ron>,
+		63	Romansh<roma1326|roh>,
+		64	Russian<russ1263|rus>,
+		65	Scots_Gaelic<scot1245|gla>,
+		66	Serbian<serb1264|srp>,
+		67	Singhalese<sinh1246|sin>,
+		68	Slovak<slov1269|slk>,
+		69	Slovenian<slov1268|slv>,
+		70	Spanish<stan1288|spa>,
+		71	Swedish<swed1254|swe>,
+		72	Swiss_German<swis1247|gsw>,
+		73	Tajik<taji1245|tgk>,
+		74	Tocharian_B<tokh1243|txb>,
+		75	Tosk<tosk1239|als>,
+		76	Ukrainian<ukra1253|ukr>,
+		77	Upper_Sorbian<uppe1395|hsb>,
+		78	Urdu<urdu1245|urd>,
+		79	Vedic_Sanskrit<sans1269|san>,
+		80	Walloon<wall1255|wln>,
+		81	Waziri<cent1973|pst>,
+		82	Welsh<wels1247|cym>
+	;
+	TREE * UNTITLED = [&R] ((((((3:0.8002440034,45:2424.240863):1432.950407,(15:0.8041948132,(21:626.3486835,1:626.6203166):899.9106954):2331.527232):633.9900732,(75:510.5463543,4:511.1320618):3980.690396):773.4373275,((((((7:1176.266568,(56:384.3859553,81:384.8750318):792.0810996):209.9091488,(73:492.4176243,57:492.2477141):893.369344):626.130156,19:2012.31257):856.902502,6:391.414396):1078.934617,(79:0.7917863135,(36:2062.199983,((46:1398.106323,((((31:567.8049904,((38:258.7328724,55:258.6279723):162.5201678,78:419.3175809):149.730517):281.3286227,10:850.9038292):243.0314244,(44:694.3874185,30:693.9588904):400.2981782):113.6207894,((54:692.1198797,5:693.5872017):271.3024527,9:963.8314634):243.948291):191.1476646):460.3556414,(67:1532.813739,61:1532.704855):326.7439609):203.1960781):1199.984609):685.6897362):1004.995529,((((((((20:262.5101271,(24:191.1025422,2:193.7395058):68.23386873):244.3497262,26:507.3309959):818.4961087,(51:0.8192166966,((42:237.3402163,72:236.4870455):75.04520185,28:308.0680933):807.7950179):206.1131007):190.0730558,(50:0.804386702,22:1002.74938):537.5754682):97.040257,((53:0.8480876324,((33:261.9829837,23:262.1135147):109.7859559,47:374.2541635):401.3845411):325.0767771,(71:459.4944964,18:459.1279166):639.3936763):512.9977904):440.7432094,29:428.549263):2146.781305,(((52:0.7936079695,(34:469.9174148,65:469.9713309):719.6018401):1097.496337,((16:462.8308753,11:723.24167):425.8460593,82:1148.494273):1137.419121):1636.083755,(39:0.7956771407,((48:398.95013,13:398.6470316):779.3637436,(62:1066.546761,((((80:236.7333404,25:230.6775449):263.6347975,60:495.9824727):317.3617118,((59:416.9509075,70:416.4080415):239.9483278,14:656.6148356):157.8142277):112.8392483,(35:675.8569562,((63:360.4871874,27:359.6412035):195.6107912,37:554.4225744):122.2007941):250.0889788):139.5393641):111.6729018):946.660563):1797.521505):277.3730127):441.1623809,((41:970.5836468,40:970.6768939):1644.458086,((((77:429.751402,(17:239.4461192,68:240.9813751):188.9599483):200.876806,58:630.580592):133.4004347,((76:419.5452607,8:419.2501992):196.259822,64:615.4600782):149.0804164):457.9380653,(49:204.610776,((66:677.4392041,(43:508.3429319,12:509.3359483):169.07579):238.4109926,69:916.4329428):250.1262254):55.89262443):1392.59639):2026.101368):311.8962542):312.0843312):467.8665634,74:4391.292299):749.4677495,32:3102.37334);
+END;

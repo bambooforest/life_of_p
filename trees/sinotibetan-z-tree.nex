@@ -1,0 +1,231 @@
+#NEXUS
+[R-package PHYTOOLS, Wed Jul  3 12:51:28 2019]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 109;
+	TAXLABELS
+		Achang_Lianghe_Burmish<acha1249|acn>
+		Achang_Longchuan_Burmish<acha1249|acn>
+		Achang_Luxi_Burmish<acha1249|acn>
+		Achang_Xiandao_Burmish<acha1249|acn>
+		Angami_Kohima_Naga<anga1288|njm>
+		Anong_Nungish<nung1282|nun>
+		Ao_Chungli_Naga<aona1235|njo>
+		Ao_Mongsen_Naga<aona1235|njo>
+		Apatani_Tani<apat1240|apt>
+		Atong_Sal<aton1241|aot>
+		Atsi_Zaiwa_Burmish<zaiw1241|atb>
+		Bengni_Tani<nyis1236|njz>
+		Bodo_Sal<bodo1269|brx>
+		Bokar_Lhoba_Tani<bori1243|adi>
+		Bola_Luxi_Burmish<pela1242|bxd>
+		Burmese_Spoken_Rangoon_Burmese<nucl1310|mya>
+		Caodeng_rGyalrongic<jiar1240|jya>
+		Chang_Sal<chan1313|nbc>
+		Chepang_Himalayan<chep1245|cdm>
+		Chinese_Mandarin_Chinese<mand1415|cmn>
+		Chinese_Old_Chinese<oldc1244|och>
+		Cuona_Mama_Bodish<tawa1289|twm>
+		Cuona_Menba_Bodish<tawa1289|twm>
+		Daai_KukiChin<daai1236|dao>
+		Daofu_rGyalrongic<horp1239|ero>
+		Darang_Taraon_Diagarish<diga1241|mhu>
+		Dimasa_Sal<dima1251|dis>
+		Ergong_Danba_rGyalrongic<horp1239|ero>
+		Ersu_Ersuish<ersu1241|ers>
+		Garo_Sal<garo1247|grt>
+		Gurung_Ghachok_TG<guru1261|gvr>
+		Hani_Caiyuan_Ngwi<hani1248|hni>
+		Hani_Dazhai_Ngwi<hani1248|hni>
+		Hani_Gelanghe_Ngwi<hani1248|hni>
+		Hani_Luchun_Ngwi<hani1248|hni>
+		Hani_Mojiang_Ngwi<honi1244|how>
+		Hani_Shuikui_Ngwi<hani1248|hni>
+		Hayu_Kiranti<wayu1241|vay>
+		Idu_Diagarish<idum1241|clk>
+		Jingpho_Sal<kach1280|kac>
+		Jinuo_Youle_Ngwi<youl1235|jiu>
+		Kanauri_Kinauri<kinn1249|kfk>
+		Karen_Karenic<sgaw1245|ksw>
+		Kayan_Pekon_Karenic<kaya1315|pdu>
+		Khaling_Kiranti<khal1275|klr>
+		Khumi_KukiChin<khum1248|cnk>
+		Konyak_Sal<kony1248|nbe>
+		Lahu_Lancang_Ngwi_Lahu<lahu1253|lhu>
+		Lahu_Yellow_Ngwi_Lahu<lahu1252|lhi>
+		Langsu_Luxi_Burmish<maru1249|mhx>
+		Leqi_Luxi_Burmish<lash1243|lsi>
+		Liangmei_Naga<lian1251|njn>
+		Limbu_Kiranti<limb1266|lif>
+		Lisu_Central_Ngwi<lisu1250|lis>
+		Lisu_Northern_Ngwi<lisu1250|lis>
+		Lotha_Naga_Naga<loth1237|njh>
+		Lyuzu_Ersuish<lizu1234|ers>
+		Magar_Himalayan<west2418|mrd/mgp>
+		Manang_Gyaru_TG<mana1288|nmm>
+		Manang_Prakaa_TG<mana1288|nmm>
+		Marma_Burmese<marm1234|rmz>
+		Matu_KukiChin<ngal1291|hlt>
+		Mpi_Ngwi<mpii1239|mpz>
+		Muya_Minyak_Qiangic<muya1239|mvm>
+		Namuyi_Naic<namu1246|nmy>
+		Naxi_Lijiang_Naic<naxi1245|nxq>
+		Naxi_Yongning_Naic<naxi1245|nxq>
+		Ngmuun_KukiChin<munc1235|mwq>
+		Nusu_Central_Nusu<nusu1239|nuf>
+		Nusu_Northern_Nusu<nusu1239|nuf>
+		Nusu_Southern_Nusu<nusu1239|nuf>
+		Pa_O_Karenic<paok1235|blk>
+		Pattani_Kinauri<patt1248|lae>
+		Phom_Sal<phom1236|nph>
+		Pumi_Qinghua_Qiangic_Pumi<sout2729|pmj>
+		Pumi_Taoba_Qiangic_Pumi<nort2723|pmi>
+		Qiang_Longxi_Qiangic<nort2722|qxs>
+		Qiang_Mawo_Qiangic<nort2722|cng>
+		Queyu_Yajiang_Qiangic<quey1238|qvy>
+		rGyalrong_Maerkang_rGyalrongic<jiar1240|jya>
+		Rongmei_Naga<rong1266|nbu>
+		Sak_Sal<chak1270|ckh>
+		Sangtam_Naga<sang1321|nsa>
+		Sema_Sumi_Naga<sumi1235|nsm>
+		Sunwar_Kiranti<sunw1242|suz>
+		Tamang_TG<west2415|tdg>
+		Tangkhul_Tangkhulic<tang1336|nmf>
+		Thado_KukiChin<thad1238|tcz>
+		Thakali_TG<thak1245|ths>
+		Thulung_Kiranti<thul1246|tdh>
+		Tibetan_Amdo_Blabrang_Tibetan<amdo1237|adx>
+		Tibetan_Amdo_Zeku_Tibetan<amdo1237|adx>
+		Tibetan_Batang_Tibetan<kham1282|khg>
+		Tibetan_Jirel_Tibetan<jire1238|jul>
+		Tibetan_Khams_Tibetan<kham1282|khg>
+		Tibetan_Lhasa_Tibetan<tibe1272|bod>
+		Tibetan_Xiahe_Tibetan<amdo1237|adx>
+		Tiddim_KukiChin<tedi1235|ctd>
+		Trung_Dulong_Nungish<drun1238|duu>
+		Trung_Nujiang_Nungish<drun1238|duu>
+		Xumi_Naic<shix1238|sxg>
+		Yi_Dafang_Ngwi<wusa1235|yig>
+		Yi_Mile_Ngwi<axiy1235|yix>
+		Yi_Mojiang_Ngwi<sout2723|nsd>
+		Yi_Nanjian_Ngwi<xish1235|ywt>
+		Yi_Sani_Ngwi<sani1269|ysn>
+		Yi_Weishan_Ngwi<xish1235|ywt>
+		Yi_Wuding_Ngwi<wudi1238|ywq>
+		Zeme_Naga<zeme1240|nzm>
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Achang_Lianghe_Burmish<acha1249|acn>,
+		2	Achang_Longchuan_Burmish<acha1249|acn>,
+		3	Achang_Luxi_Burmish<acha1249|acn>,
+		4	Achang_Xiandao_Burmish<acha1249|acn>,
+		5	Angami_Kohima_Naga<anga1288|njm>,
+		6	Anong_Nungish<nung1282|nun>,
+		7	Ao_Chungli_Naga<aona1235|njo>,
+		8	Ao_Mongsen_Naga<aona1235|njo>,
+		9	Apatani_Tani<apat1240|apt>,
+		10	Atong_Sal<aton1241|aot>,
+		11	Atsi_Zaiwa_Burmish<zaiw1241|atb>,
+		12	Bengni_Tani<nyis1236|njz>,
+		13	Bodo_Sal<bodo1269|brx>,
+		14	Bokar_Lhoba_Tani<bori1243|adi>,
+		15	Bola_Luxi_Burmish<pela1242|bxd>,
+		16	Burmese_Spoken_Rangoon_Burmese<nucl1310|mya>,
+		17	Caodeng_rGyalrongic<jiar1240|jya>,
+		18	Chang_Sal<chan1313|nbc>,
+		19	Chepang_Himalayan<chep1245|cdm>,
+		20	Chinese_Mandarin_Chinese<mand1415|cmn>,
+		21	Chinese_Old_Chinese<oldc1244|och>,
+		22	Cuona_Mama_Bodish<tawa1289|twm>,
+		23	Cuona_Menba_Bodish<tawa1289|twm>,
+		24	Daai_KukiChin<daai1236|dao>,
+		25	Daofu_rGyalrongic<horp1239|ero>,
+		26	Darang_Taraon_Diagarish<diga1241|mhu>,
+		27	Dimasa_Sal<dima1251|dis>,
+		28	Ergong_Danba_rGyalrongic<horp1239|ero>,
+		29	Ersu_Ersuish<ersu1241|ers>,
+		30	Garo_Sal<garo1247|grt>,
+		31	Gurung_Ghachok_TG<guru1261|gvr>,
+		32	Hani_Caiyuan_Ngwi<hani1248|hni>,
+		33	Hani_Dazhai_Ngwi<hani1248|hni>,
+		34	Hani_Gelanghe_Ngwi<hani1248|hni>,
+		35	Hani_Luchun_Ngwi<hani1248|hni>,
+		36	Hani_Mojiang_Ngwi<honi1244|how>,
+		37	Hani_Shuikui_Ngwi<hani1248|hni>,
+		38	Hayu_Kiranti<wayu1241|vay>,
+		39	Idu_Diagarish<idum1241|clk>,
+		40	Jingpho_Sal<kach1280|kac>,
+		41	Jinuo_Youle_Ngwi<youl1235|jiu>,
+		42	Kanauri_Kinauri<kinn1249|kfk>,
+		43	Karen_Karenic<sgaw1245|ksw>,
+		44	Kayan_Pekon_Karenic<kaya1315|pdu>,
+		45	Khaling_Kiranti<khal1275|klr>,
+		46	Khumi_KukiChin<khum1248|cnk>,
+		47	Konyak_Sal<kony1248|nbe>,
+		48	Lahu_Lancang_Ngwi_Lahu<lahu1253|lhu>,
+		49	Lahu_Yellow_Ngwi_Lahu<lahu1252|lhi>,
+		50	Langsu_Luxi_Burmish<maru1249|mhx>,
+		51	Leqi_Luxi_Burmish<lash1243|lsi>,
+		52	Liangmei_Naga<lian1251|njn>,
+		53	Limbu_Kiranti<limb1266|lif>,
+		54	Lisu_Central_Ngwi<lisu1250|lis>,
+		55	Lisu_Northern_Ngwi<lisu1250|lis>,
+		56	Lotha_Naga_Naga<loth1237|njh>,
+		57	Lyuzu_Ersuish<lizu1234|ers>,
+		58	Magar_Himalayan<west2418|mrd/mgp>,
+		59	Manang_Gyaru_TG<mana1288|nmm>,
+		60	Manang_Prakaa_TG<mana1288|nmm>,
+		61	Marma_Burmese<marm1234|rmz>,
+		62	Matu_KukiChin<ngal1291|hlt>,
+		63	Mpi_Ngwi<mpii1239|mpz>,
+		64	Muya_Minyak_Qiangic<muya1239|mvm>,
+		65	Namuyi_Naic<namu1246|nmy>,
+		66	Naxi_Lijiang_Naic<naxi1245|nxq>,
+		67	Naxi_Yongning_Naic<naxi1245|nxq>,
+		68	Ngmuun_KukiChin<munc1235|mwq>,
+		69	Nusu_Central_Nusu<nusu1239|nuf>,
+		70	Nusu_Northern_Nusu<nusu1239|nuf>,
+		71	Nusu_Southern_Nusu<nusu1239|nuf>,
+		72	Pa_O_Karenic<paok1235|blk>,
+		73	Pattani_Kinauri<patt1248|lae>,
+		74	Phom_Sal<phom1236|nph>,
+		75	Pumi_Qinghua_Qiangic_Pumi<sout2729|pmj>,
+		76	Pumi_Taoba_Qiangic_Pumi<nort2723|pmi>,
+		77	Qiang_Longxi_Qiangic<nort2722|qxs>,
+		78	Qiang_Mawo_Qiangic<nort2722|cng>,
+		79	Queyu_Yajiang_Qiangic<quey1238|qvy>,
+		80	rGyalrong_Maerkang_rGyalrongic<jiar1240|jya>,
+		81	Rongmei_Naga<rong1266|nbu>,
+		82	Sak_Sal<chak1270|ckh>,
+		83	Sangtam_Naga<sang1321|nsa>,
+		84	Sema_Sumi_Naga<sumi1235|nsm>,
+		85	Sunwar_Kiranti<sunw1242|suz>,
+		86	Tamang_TG<west2415|tdg>,
+		87	Tangkhul_Tangkhulic<tang1336|nmf>,
+		88	Thado_KukiChin<thad1238|tcz>,
+		89	Thakali_TG<thak1245|ths>,
+		90	Thulung_Kiranti<thul1246|tdh>,
+		91	Tibetan_Amdo_Blabrang_Tibetan<amdo1237|adx>,
+		92	Tibetan_Amdo_Zeku_Tibetan<amdo1237|adx>,
+		93	Tibetan_Batang_Tibetan<kham1282|khg>,
+		94	Tibetan_Jirel_Tibetan<jire1238|jul>,
+		95	Tibetan_Khams_Tibetan<kham1282|khg>,
+		96	Tibetan_Lhasa_Tibetan<tibe1272|bod>,
+		97	Tibetan_Xiahe_Tibetan<amdo1237|adx>,
+		98	Tiddim_KukiChin<tedi1235|ctd>,
+		99	Trung_Dulong_Nungish<drun1238|duu>,
+		100	Trung_Nujiang_Nungish<drun1238|duu>,
+		101	Xumi_Naic<shix1238|sxg>,
+		102	Yi_Dafang_Ngwi<wusa1235|yig>,
+		103	Yi_Mile_Ngwi<axiy1235|yix>,
+		104	Yi_Mojiang_Ngwi<sout2723|nsd>,
+		105	Yi_Nanjian_Ngwi<xish1235|ywt>,
+		106	Yi_Sani_Ngwi<sani1269|ysn>,
+		107	Yi_Weishan_Ngwi<xish1235|ywt>,
+		108	Yi_Wuding_Ngwi<wudi1238|ywq>,
+		109	Zeme_Naga<zeme1240|nzm>
+	;
+	TREE * UNTITLED = [&R] (((((((((((((((1:543.225088,3:543.225088):415.423538,(2:506.07303,4:506.07303):452.575596):125.191589,11:1083.840215):16.87534,((15:302.430146,50:302.430146):255.175353,51:557.605498):543.110057):273.037594,(16:763.669888,61:763.669888):610.083261):409.479879,(69:515.724082,(70:271.380417,71:271.380417):244.343666):1267.508946):148.835091,((((32:964.897337,(((33:492.111161,34:492.111161):19.715841,35:511.827003):186.986089,(36:491.836763,37:491.836763):206.976329):266.084245):228.045035,63:1192.942372):80.230186,41:1273.172558):322.404663,(((48:586.914313,49:586.914313):766.484284,((54:550.685699,55:550.685699):713.751893,(105:566.640812,107:566.640812):697.79678):88.961005):79.546516,((102:775.277409,(103:559.910159,104:559.910159):215.36725):358.260846,(106:737.297764,108:737.297764):396.240491):299.406857):162.632108):336.490899):823.656551,((((17:751.121767,80:751.121767):1169.308763,(((25:882.255577,28:882.255577):330.987648,64:1213.243224):618.913021,(((75:708.904409,76:708.904409):662.959,79:1371.863409):217.507995,(77:946.974887,78:946.974887):642.396517):242.784841):88.274284):86.275416,(29:1181.823945,57:1181.823945):824.882):168.661763,(65:1362.311265,((66:489.953528,67:489.953528):757.968649,101:1247.922177):114.389087):813.056443):580.356963):1360.407634,(((22:873.324378,23:873.324378):1108.243466,(((((91:395.959542,92:395.959542):162.312611,97:558.272153):224.54147,96:782.813623):76.390878,(93:726.805622,95:726.805622):132.398879):280.768052,94:1139.972553):841.595291):1262.621083,((31:804.223263,(86:740.954452,89:740.954452):63.268811):394.034959,(59:356.837135,60:356.837135):841.421087):2045.930704):871.943378):193.054023,(42:1844.617927,73:1844.617927):2464.5684):110.885724,((6:1593.816899,(99:546.83251,100:546.83251):1046.984389):2636.356079,((19:1988.204284,58:1988.204284):1438.551237,(((38:1643.614576,85:1643.614576):868.595785,(45:1959.682641,90:1959.682641):552.52772):445.984503,53:2958.194864):468.560656):803.417458):189.899074):195.106647,((9:838.577457,(12:609.98051,14:609.98051):228.596947):3551.765336,(26:1791.270133,39:1791.270133):2599.072661):224.835905):143.705077,((((10:1112.478204,30:1112.478204):329.902278,(13:1162.954978,27:1162.954978):279.425504):960.599289,(18:1405.645436,(47:946.658328,74:946.658328):458.987108):997.334335):1040.577844,(40:2795.10065,82:2795.10065):648.456965):1315.32616):97.209867,(((((5:1531.487008,84:1531.487008):870.459079,(((52:700.554381,109:700.554381):715.53589,81:1416.090271):870.983167,87:2287.073438):114.872649):353.242633,(((7:616.113797,8:616.113797):504.485127,83:1120.598924):58.298108,56:1178.897032):1576.291688):547.277375,(((24:474.999714,68:474.999714):229.359918,62:704.359631):1205.549274,(46:1534.270052,(88:602.64811,98:602.64811):931.621942):375.638853):1392.55719):1057.884867,(43:1128.949818,(44:972.1763,72:972.1763):156.773518):3231.401144):495.74268):1014.935947,(20:2749.949799,21:283.863905):3121.07979);
+END;
