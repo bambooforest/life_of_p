@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, error = FALSE, warning = FALSE, message = FAL
 
 # Overview
 
-This supplementary materials for the manuscript "Life of /p/" uses the R [@R] programming language and the following R libraries [@tidyverse,@knitr,@phytools,@phylotools,@Yu2020-qs,@testthat].
+This supplementary materials for the manuscript "Life of /p/" uses the R programming language [@R] and the following R libraries [@tidyverse;@knitr;@phytools;@phylotools;@Yu2020-qs;@testthat].
 
 ```{r, message=F, warning=F}
 library(tidyverse)
@@ -156,7 +156,7 @@ ggplot(data=no_p_by_geography, aes(x=longitude,y=latitude)) +
   geom_point()
 ```
 
-Africa is notable for lacking voiceless bilabial plosives [@houis1974,@maddieson1984,@clements2008] and is interesting because within a relatively broad sample of phonological segment borrowings /p/ is the most frequently borrowewd speech sound [@grossman_etal2020_segbo]. In other words, /p/ seems to have been lost in certain linguistic areas, probably due to regular processes of sound change, but then is easily re-introduced into languages via borrowing, e.g., Tem (Central Gur, Togo), Tigrinya (Semitic, Ethiopia), or !Xóõ (Tuu, Botswana and Namibia) [@clements2008]. (Similar observations about cross-linguistically frequently segments missing in certain world areas, which were perhaps lost at some point in the past and this loss then inherented by daughter languages and dialects, is reported by @Moran_etal2021).
+Africa is notable for lacking voiceless bilabial plosives [@houis1974;@maddieson1984;@clements2008] and is interesting because within a relatively broad sample of phonological segment borrowings /p/ is the most frequently borrowewd speech sound [@grossman_etal2020_segbo]. In other words, /p/ seems to have been lost in certain linguistic areas, probably due to regular processes of sound change, but then is easily re-introduced into languages via borrowing, e.g., Tem (Central Gur, Togo), Tigrinya (Semitic, Ethiopia), or !Xóõ (Tuu, Botswana and Namibia) [@clements2008]. (Similar observations about cross-linguistically frequently segments missing in certain world areas, which were perhaps lost at some point in the past and this loss then inherented by daughter languages and dialects, is reported by @Moran_etal2021).
 
 So of the languages that lack /p/, how many also lack /b/?
 
@@ -327,7 +327,7 @@ ggplot(data=b_but_no_p, aes(x=longitude,y=latitude)) +
 
 Mainly in Africa, in which this phenomenon has also been noted as a feature north of the equator and in the Arabian penisula. It is also known that Arabi lost its /p/ in prehistoric times, but it is unclear whether the lack of /p/ in these areas is due to Arabic's influence as a prestige language or whether the effect itself is even more ancient.
 
-Hence, one interesting area to investigate the cross-linguistic frequency of labial sounds is in ancient and reconstruction languages of the world. BDPROTO is a database of phonological inventories from ancient and reconstructed languages [@marsico_bdproto_2018,@Moran_etal2020]. We can evaluate these (proto) languages for the presence or absence of bilabials in ancient times.
+Hence, one interesting area to investigate the cross-linguistic frequency of labial sounds is in ancient and reconstruction languages of the world. BDPROTO is a database of phonological inventories from ancient and reconstructed languages [@marsico_bdproto_2018;@Moran_etal2020]. We can evaluate these (proto) languages for the presence or absence of bilabials in ancient times.
 
 ```{r}
 bdproto <- read_csv(url('https://raw.githubusercontent.com/bdproto/bdproto/master/bdproto.csv'))

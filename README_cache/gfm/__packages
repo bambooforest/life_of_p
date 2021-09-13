@@ -8,10 +8,10 @@ purrr
 dplyr
 stringr
 forcats
+knitr
 ape
 maps
 phytools
 phylotools
-knitr
 ggtree
 testthat

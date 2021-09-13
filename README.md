@@ -17,8 +17,9 @@ Steven Moran and Adriano Lameira
 # Overview
 
 This supplementary materials for the manuscript “Life of /p/” uses the R
-(R Core Team 2021) programming language and the following R libraries
-Wickham (2011).
+programming language (R Core Team 2021) and the following R libraries
+(Wickham et al. 2019; Xie 2021; Revell 2012; J. Zhang 2017; Yu 2020;
+Wickham 2011).
 
 ``` r
 library(tidyverse)
@@ -186,7 +187,7 @@ We summarize their counts.
 phoible_by_iso_with_p %>% group_by(ISO6393) %>% summarize(n = n()) %>% arrange(desc(n))
 ```
 
-    ## # A tibble: 1,949 x 2
+    ## # A tibble: 1,949 × 2
     ##    ISO6393     n
     ##    <chr>   <int>
     ##  1 lez         6
@@ -252,19 +253,19 @@ ggplot(data=no_p_by_geography, aes(x=longitude,y=latitude)) +
 
 ![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
-Africa is notable for lacking voiceless bilabial plosives Clements and
-Rialland (2008) and is interesting because within a relatively broad
-sample of phonological segment borrowings /p/ is the most frequently
-borrowewd speech sound (Grossman et al. 2020). In other words, /p/ seems
-to have been lost in certain linguistic areas, probably due to regular
-processes of sound change, but then is easily re-introduced into
-languages via borrowing, e.g., Tem (Central Gur, Togo), Tigrinya
-(Semitic, Ethiopia), or !Xóõ (Tuu, Botswana and Namibia) (Clements and
-Rialland 2008). (Similar observations about cross-linguistically
-frequently segments missing in certain world areas, which were perhaps
-lost at some point in the past and this loss then inherented by daughter
-languages and dialects, is reported by Moran, Lester, and Grossman
-(2021)).
+Africa is notable for lacking voiceless bilabial plosives (Houis 1974;
+Maddieson 1984; Clements and Rialland 2008) and is interesting because
+within a relatively broad sample of phonological segment borrowings /p/
+is the most frequently borrowewd speech sound (Grossman et al. 2020). In
+other words, /p/ seems to have been lost in certain linguistic areas,
+probably due to regular processes of sound change, but then is easily
+re-introduced into languages via borrowing, e.g., Tem (Central Gur,
+Togo), Tigrinya (Semitic, Ethiopia), or !Xóõ (Tuu, Botswana and Namibia)
+(Clements and Rialland 2008). (Similar observations about
+cross-linguistically frequently segments missing in certain world areas,
+which were perhaps lost at some point in the past and this loss then
+inherented by daughter languages and dialects, is reported by Moran,
+Lester, and Grossman (2021)).
 
 So of the languages that lack /p/, how many also lack /b/?
 
@@ -538,9 +539,9 @@ prestige language or whether the effect itself is even more ancient.
 Hence, one interesting area to investigate the cross-linguistic
 frequency of labial sounds is in ancient and reconstruction languages of
 the world. BDPROTO is a database of phonological inventories from
-ancient and reconstructed languages Moran, Grossman, and Verkerk (2020).
-We can evaluate these (proto) languages for the presence or absence of
-bilabials in ancient times.
+ancient and reconstructed languages (Marsico et al. 2018; Moran,
+Grossman, and Verkerk 2020). We can evaluate these (proto) languages for
+the presence or absence of bilabials in ancient times.
 
 ``` r
 bdproto <- read_csv(url('https://raw.githubusercontent.com/bdproto/bdproto/master/bdproto.csv'))
