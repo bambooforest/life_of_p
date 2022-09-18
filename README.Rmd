@@ -1,5 +1,5 @@
 ---
-title: "Supplementary materials: Life of p"
+title: "Supplementary materials: Life of /p/"
 author: "Steven Moran and Adriano Lameira"
 date: "(`r format(Sys.time(), '%d %B, %Y')`)"
 output:
@@ -36,7 +36,7 @@ In what follows, we undertake several analyses including:
 
 # Analyses
 
-## Cross-linguistic segment frequencies
+## Modern cross-linguistic segment frequencies
 
 For cross-linguistic analyses of segment frequencies, we combine the PHOIBLE sample of phonological inventories [@phoible] and append to them the linguistic and non-linguistic metadata data associated with the Glottolog, a catalog of the world's languages [@glottolog].
 
@@ -210,6 +210,29 @@ The languages reported in South America, Enawené-Nawé, Yekwana, Waiwai, Taushi
 * https://phoible.org/inventories/view/1968#tipa
 
 Thus, even when languages lack pure /p/ and /b/, there tends to me to some extent the phonological feature labial still present in the phonological inventory.
+
+What about languages with no labial sounds at all? First let's get all the languages with labials.
+
+```{r}
+labials <- phoible %>% select(ISO6393, Phoneme) %>% filter(grepl('p|b|m|ɸ|β|ʙ', Phoneme)) %>% distinct()
+
+phoible_by_iso_no_labials <- phoible_by_iso %>% filter(!(ISO6393 %in% labials$ISO6393)) %>% select(ISO6393) %>% distinct() %>% arrange(ISO6393)
+```
+
+There are five languages in the total sample that purportedly have no kind of labial, /w/ notwitstanding.
+
+```{r}
+phoible_by_iso_no_labials %>% kable()
+```
+
+* https://phoible.org/inventories/view/77#tipa
+* https://phoible.org/inventories/view/1968#tipa
+* https://phoible.org/inventories/view/1936#tipa
+* https://phoible.org/inventories/view/74#tipa
+* https://phoible.org/inventories/view/611#tipa
+* https://phoible.org/inventories/view/885#tipa
+
+Of the five languages (and six doculects) listed above, only Oneida does not list the voiced labial-velar approximant /w/ as contrastive. [Oneida](https://en.wikipedia.org/wiki/Oneida_language#Phonology) is noted as being exceptional because it lacks bilabial consonants and labiodental fricatives. However, Oneida reportedly has /w/ and labialized /kw/ [@Michelson1990;@Abbott2006] and even in the source above in phoible [@Lounsbury1953], it is noted that many speakers use the voiceless bilabial fricative or other bilabial or labiodental articulations instead of the voiced velar approximant.
 
 
 ## The feature labial
@@ -385,6 +408,43 @@ bdproto_results %>% filter(is.na(has_b) & has_p)
 
 Interestingly, no ancient or reconstructed languages in the BDPROTO lack both /p/ and /b/. And the general tendency, if either one or the other is missing, is to favor /p/.
 
+What about bilabial fricatives. About 9 percent of the data points reported in BDPROTO have them.
+
+```{r}
+bdproto_bialbials <- bdproto %>% filter(grepl("ɸ|β", Phoneme))
+lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(BdprotoID) %>% distinct()
+nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(BdprotoID) %>% distinct())
+```
+
+How many data points do not have Glottocodes -- a marker of how many languages / dialects are reported in BDPROTO -- 214 out of 272.
+
+```{r}
+nrow(bdproto %>% select(BdprotoID) %>% distinct())
+nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
+```
+
+Does the frequency of the presence of bilabial fricatives change if we subset the data on Glottocodes? It actually goes up to about 10%.
+
+```{r}
+bdproto_bialbials <- bdproto %>% filter(!is.na(Glottocode)) %>% filter(grepl("ɸ|β", Phoneme))
+lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(Glottocode) %>% distinct()
+nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
+```
+
+When compared to PHOIBLE is this prevalance of languages with contrastive (or reconstructed) bilabial fricatives greater or less today than in the past? We expect that the percentage to go down, as sounds shift to for example labiodentals, which have a greater intensity of noise, i.e. (todo figure out where this passage is from!):
+
+```
+For example, if we compare bilabial fricatives and labiodental fricatives, the latter have much greater amplitude (40). Not only is the intensity of the noise greater, but it is also a function of frequency, with voiceless labiodental fricative [f] showing greater energy above ~2kHz (below this the spectral profile is quite similar to that of voiceless bilabial fricative [ɸ]) (41). Stevens (42) puts the first resonance at 10 kHz; resonance shaping is much less for for bilabials because there is no tube in front of the lips. This means in a situation in which bilabial and labiodental fricatives are present, the latter are more perceptually salient. Their ease of articulation in the overjet bite configuration and their perceptual salience are factors in why they tend to dominate phonological inventories cross-linguistically. Indeed, bilabial fricatives are much rarer than labiodental fricatives (voiceless and voiced bilabial fricatives [ɸ] and [β] occur in 6% and 12% in (Moran et al. 2014); [f] and [v] occur in 49% and 37%, respectively. It is also rare for languages to contrast both bilabial and labiodental fricatives (roughly 3% of languages in (Moran et al. 2014)). This may be expected because although labiodentals have greater amplitude, the acoustic differences between these pairs of fricatives is subtle phonetically. Hence other factors such as, it may also be that labiodentals are visually more salient (43) and thus play a role in transmission beyond just aurally.
+```
+
+Let's calculate phoible by ISO 639-3 language codes. PHOIBLE actually has a higher percentage of bilabials than in the BDPROTO study at nearly 17%.
+
+```{r}
+phoible_bialbials <- phoible %>% filter(!is.na(ISO6393)) %>% filter(grepl("ɸ|β", Phoneme))
+lgs_with_phoible_bialbials <- phoible_bialbials %>% select(ISO6393) %>% distinct()
+nrow(lgs_with_phoible_bialbials) / nrow(phoible %>% select(ISO6393) %>% filter(!is.na(ISO6393)) %>% distinct())
+```
+
 
 ## Labials from a diachronic perspective
 
@@ -494,6 +554,64 @@ p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
   geom_tiplab(align=T, linesize = .1, size = 2) 
 plot.tree(p, traits.print)
 ```
+
+# Exploratory
+
+Are there any languages with phi that lack p/b?
+
+```{r}
+x <- has_phi <- phoible %>% 
+  filter(grepl("ɸ", Phoneme)) %>%
+  select(InventoryID) %>% 
+  distinct()
+
+y <- phoible %>%
+  filter(grepl("p", Phoneme)) %>% 
+  select(InventoryID) %>% 
+  distinct()
+
+which(!(x$InventoryID %in% y$InventoryID))
+
+```
+
+
+# Borrowability
+
+And SegBo? Is it often borrowed in areas where they do not have it?
+
+https://www.researchgate.net/publication/335740469_The_bilabial_trills_of_Ahamb_Vanuatu_Acoustic_and_articulatory_properties
+
+Todos:
+
+- Analyze SegBo -- is it often borrowed in areas where they do not have it?
+- get the borrowability score of segments and labials from Elad
+
+What about in segbo? Very few data points overall.
+
+```{r}
+values <- read_csv(url('https://raw.githubusercontent.com/cldf-datasets/segbo/master/cldf/values.csv'))
+```
+
+```{r}
+values %>% 
+  filter(grepl("p", Value)) %>%
+  select(Value) %>%
+  group_by(Value) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
+```
+
+```{r}
+values %>% 
+  filter(grepl("[ɸβ]", Value)) %>%
+  select(Value) %>%
+  group_by(Value) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
+```
+
 
 
 # References

@@ -1,18 +1,24 @@
-Supplementary materials: Life of p
+Supplementary materials: Life of /p/
 ================
 Steven Moran and Adriano Lameira
-(14 September, 2021)
+(18 September, 2022)
 
--   [Overview](#overview)
--   [Analyses](#analyses)
-    -   [Cross-linguistic segment
-        frequencies](#cross-linguistic-segment-frequencies)
-    -   [The feature labial](#the-feature-labial)
-    -   [Labials in ancient and reconstructed
-        languages](#labials-in-ancient-and-reconstructed-languages)
-    -   [Labials from a diachronic
-        perspective](#labials-from-a-diachronic-perspective)
--   [References](#references)
+-   <a href="#overview" id="toc-overview">Overview</a>
+-   <a href="#analyses" id="toc-analyses">Analyses</a>
+    -   <a href="#modern-cross-linguistic-segment-frequencies"
+        id="toc-modern-cross-linguistic-segment-frequencies">Modern
+        cross-linguistic segment frequencies</a>
+    -   <a href="#the-feature-labial" id="toc-the-feature-labial">The feature
+        labial</a>
+    -   <a href="#labials-in-ancient-and-reconstructed-languages"
+        id="toc-labials-in-ancient-and-reconstructed-languages">Labials in
+        ancient and reconstructed languages</a>
+    -   <a href="#labials-from-a-diachronic-perspective"
+        id="toc-labials-from-a-diachronic-perspective">Labials from a diachronic
+        perspective</a>
+-   <a href="#exploratory" id="toc-exploratory">Exploratory</a>
+-   <a href="#borrowability" id="toc-borrowability">Borrowability</a>
+-   <a href="#references" id="toc-references">References</a>
 
 # Overview
 
@@ -45,7 +51,7 @@ In what follows, we undertake several analyses including:
 
 # Analyses
 
-## Cross-linguistic segment frequencies
+## Modern cross-linguistic segment frequencies
 
 For cross-linguistic analyses of segment frequencies, we combine the
 PHOIBLE sample of phonological inventories (Moran and McCloy 2019) and
@@ -201,6 +207,7 @@ phoible_by_iso_with_p %>% group_by(ISO6393) %>% summarize(n = n()) %>% arrange(d
     ##  9 alw         4
     ## 10 amh         4
     ## # … with 1,939 more rows
+    ## # ℹ Use `print(n = ...)` to see more rows
 
 Which are the languages that contain no “p-like” segments?
 
@@ -230,7 +237,7 @@ nrow(phoible_by_iso_no_p)
 One random example is
 [Afar](https://phoible.org/inventories/view/1342#tipa), which does not
 contain a voiceless bilabial plosive, but it does contain its voiced
-counterpart “b.” Another is
+counterpart “b”. Another is
 [Somali](https://phoible.org/inventories/view/552#tipa) with the same
 segment configuration within the bilabial plosives. Both languages are
 also in Africa.
@@ -371,6 +378,47 @@ Thus, even when languages lack pure /p/ and /b/, there tends to me to
 some extent the phonological feature labial still present in the
 phonological inventory.
 
+What about languages with no labial sounds at all? First let’s get all
+the languages with labials.
+
+``` r
+labials <- phoible %>% select(ISO6393, Phoneme) %>% filter(grepl('p|b|m|ɸ|β|ʙ', Phoneme)) %>% distinct()
+
+phoible_by_iso_no_labials <- phoible_by_iso %>% filter(!(ISO6393 %in% labials$ISO6393)) %>% select(ISO6393) %>% distinct() %>% arrange(ISO6393)
+```
+
+There are five languages in the total sample that purportedly have no
+kind of labial, /w/ notwitstanding.
+
+``` r
+phoible_by_iso_no_labials %>% kable()
+```
+
+| ISO6393 |
+|:--------|
+| one     |
+| opy     |
+| trr     |
+| wic     |
+| wya     |
+
+-   <https://phoible.org/inventories/view/77#tipa>
+-   <https://phoible.org/inventories/view/1968#tipa>
+-   <https://phoible.org/inventories/view/1936#tipa>
+-   <https://phoible.org/inventories/view/74#tipa>
+-   <https://phoible.org/inventories/view/611#tipa>
+-   <https://phoible.org/inventories/view/885#tipa>
+
+Of the five languages (and six doculects) listed above, only Oneida does
+not list the voiced labial-velar approximant /w/ as contrastive.
+[Oneida](https://en.wikipedia.org/wiki/Oneida_language#Phonology) is
+noted as being exceptional because it lacks bilabial consonants and
+labiodental fricatives. However, Oneida reportedly has /w/ and
+labialized /kw/ (Michelson 1990; Abbott 2006) and even in the source
+above in phoible (Lounsbury 1953), it is noted that many speakers use
+the voiceless bilabial fricative or other bilabial or labiodental
+articulations instead of the voiced velar approximant.
+
 ## The feature labial
 
 How common is the phonological feature labial in the phonological
@@ -396,7 +444,7 @@ phonetic features by identifying which features are needed to
 contrastively encode all of the segments within the language. For
 example in the table above, if a language contains /p/ and /b/, we can
 consider `periodicGlottalSource` necessary for encoding the phonological
-distinction between the words ‘pad’ and ‘bad,’ which only differ in
+distinction between the words ‘pad’ and ‘bad’, which only differ in
 terms of the voicing, i.e., vocal chord vibration.
 
 In other work, we have developed an algorithm for identifying which
@@ -447,7 +495,7 @@ ggplot(cross_features, aes(reorder(x = value, -total), y= total)) +
   ggtitle("Feature frequency by language")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
 
 Most languages employ the phonological feature `labial` to encode
 contrastive sounds in their language.
@@ -528,7 +576,7 @@ ggplot(data=b_but_no_p, aes(x=longitude,y=latitude)) +
   geom_point()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
 
 Mainly in Africa, in which this phenomenon has also been noted as a
 feature north of the equator and in the Arabian penisula. It is also
@@ -618,6 +666,7 @@ bdproto_results %>% filter(is.na(has_p) & is.na(has_b))
 
     ## # A tibble: 0 × 3
     ## # … with 3 variables: BdprotoID <dbl>, has_p <lgl>, has_b <lgl>
+    ## # ℹ Use `colnames()` to see all variable names
 
 Which lack a /p/? 15 out of 253 data points, so around 8%.
 
@@ -669,6 +718,7 @@ bdproto_results %>% filter(is.na(has_b))
     ##  9        27 TRUE  NA   
     ## 10        30 TRUE  NA   
     ## # … with 84 more rows
+    ## # ℹ Use `print(n = ...)` to see more rows
 
 Which lack a /p/ but not /b/?
 
@@ -719,10 +769,68 @@ bdproto_results %>% filter(is.na(has_b) & has_p)
     ##  9        27 TRUE  NA   
     ## 10        30 TRUE  NA   
     ## # … with 84 more rows
+    ## # ℹ Use `print(n = ...)` to see more rows
 
 Interestingly, no ancient or reconstructed languages in the BDPROTO lack
 both /p/ and /b/. And the general tendency, if either one or the other
 is missing, is to favor /p/.
+
+What about bilabial fricatives. About 9 percent of the data points
+reported in BDPROTO have them.
+
+``` r
+bdproto_bialbials <- bdproto %>% filter(grepl("ɸ|β", Phoneme))
+lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(BdprotoID) %>% distinct()
+nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(BdprotoID) %>% distinct())
+```
+
+    ## [1] 0.08823529
+
+How many data points do not have Glottocodes – a marker of how many
+languages / dialects are reported in BDPROTO – 214 out of 272.
+
+``` r
+nrow(bdproto %>% select(BdprotoID) %>% distinct())
+```
+
+    ## [1] 272
+
+``` r
+nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
+```
+
+    ## [1] 214
+
+Does the frequency of the presence of bilabial fricatives change if we
+subset the data on Glottocodes? It actually goes up to about 10%.
+
+``` r
+bdproto_bialbials <- bdproto %>% filter(!is.na(Glottocode)) %>% filter(grepl("ɸ|β", Phoneme))
+lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(Glottocode) %>% distinct()
+nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
+```
+
+    ## [1] 0.09813084
+
+When compared to PHOIBLE is this prevalance of languages with
+contrastive (or reconstructed) bilabial fricatives greater or less today
+than in the past? We expect that the percentage to go down, as sounds
+shift to for example labiodentals, which have a greater intensity of
+noise, i.e. (todo figure out where this passage is from!):
+
+    For example, if we compare bilabial fricatives and labiodental fricatives, the latter have much greater amplitude (40). Not only is the intensity of the noise greater, but it is also a function of frequency, with voiceless labiodental fricative [f] showing greater energy above ~2kHz (below this the spectral profile is quite similar to that of voiceless bilabial fricative [ɸ]) (41). Stevens (42) puts the first resonance at 10 kHz; resonance shaping is much less for for bilabials because there is no tube in front of the lips. This means in a situation in which bilabial and labiodental fricatives are present, the latter are more perceptually salient. Their ease of articulation in the overjet bite configuration and their perceptual salience are factors in why they tend to dominate phonological inventories cross-linguistically. Indeed, bilabial fricatives are much rarer than labiodental fricatives (voiceless and voiced bilabial fricatives [ɸ] and [β] occur in 6% and 12% in (Moran et al. 2014); [f] and [v] occur in 49% and 37%, respectively. It is also rare for languages to contrast both bilabial and labiodental fricatives (roughly 3% of languages in (Moran et al. 2014)). This may be expected because although labiodentals have greater amplitude, the acoustic differences between these pairs of fricatives is subtle phonetically. Hence other factors such as, it may also be that labiodentals are visually more salient (43) and thus play a role in transmission beyond just aurally.
+
+Let’s calculate phoible by ISO 639-3 language codes. PHOIBLE actually
+has a higher percentage of bilabials than in the BDPROTO study at nearly
+17%.
+
+``` r
+phoible_bialbials <- phoible %>% filter(!is.na(ISO6393)) %>% filter(grepl("ɸ|β", Phoneme))
+lgs_with_phoible_bialbials <- phoible_bialbials %>% select(ISO6393) %>% distinct()
+nrow(lgs_with_phoible_bialbials) / nrow(phoible %>% select(ISO6393) %>% filter(!is.na(ISO6393)) %>% distinct())
+```
+
+    ## [1] 0.167304
 
 ## Labials from a diachronic perspective
 
@@ -816,7 +924,7 @@ p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
 plot.tree(p, traits.print)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-42-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-48-1.png)<!-- -->
 
 What we find is that within the Indo-European phylogeny the feature
 labial is present in all daughter nodes of the famil tree (which has
@@ -864,11 +972,102 @@ p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
 plot.tree(p, traits.print)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-44-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-50-1.png)<!-- -->
+
+# Exploratory
+
+Are there any languages with phi that lack p/b?
+
+``` r
+x <- has_phi <- phoible %>% 
+  filter(grepl("ɸ", Phoneme)) %>%
+  select(InventoryID) %>% 
+  distinct()
+
+y <- phoible %>%
+  filter(grepl("p", Phoneme)) %>% 
+  select(InventoryID) %>% 
+  distinct()
+
+which(!(x$InventoryID %in% y$InventoryID))
+```
+
+    ##  [1]   2  12  30  34  38  39  41  52  57  58  72  75  81  82 112 114 117 118 122
+    ## [20] 146 149
+
+# Borrowability
+
+And SegBo? Is it often borrowed in areas where they do not have it?
+
+<https://www.researchgate.net/publication/335740469_The_bilabial_trills_of_Ahamb_Vanuatu_Acoustic_and_articulatory_properties>
+
+Todos:
+
+-   Analyze SegBo – is it often borrowed in areas where they do not have
+    it?
+-   get the borrowability score of segments and labials from Elad
+
+What about in segbo? Very few data points overall.
+
+``` r
+values <- read_csv(url('https://raw.githubusercontent.com/cldf-datasets/segbo/master/cldf/values.csv'))
+```
+
+``` r
+values %>% 
+  filter(grepl("p", Value)) %>%
+  select(Value) %>%
+  group_by(Value) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
+```
+
+    ## # A tibble: 13 × 3
+    ##    Value count crosslingfreq
+    ##    <chr> <int>         <dbl>
+    ##  1 p        48       0.219  
+    ##  2 pʰ        8       0.0365 
+    ##  3 kp        3       0.0137 
+    ##  4 pʲ        2       0.00913
+    ##  5 pʲʰ       2       0.00913
+    ##  6 pʼ        2       0.00913
+    ##  7 pˤ        2       0.00913
+    ##  8 mp        1       0.00457
+    ##  9 ŋmkp      1       0.00457
+    ## 10 pʃʰ       1       0.00457
+    ## 11 pʷ        1       0.00457
+    ## 12 pʷʰ       1       0.00457
+    ## 13 pʷʼ       1       0.00457
+
+``` r
+values %>% 
+  filter(grepl("[ɸβ]", Value)) %>%
+  select(Value) %>%
+  group_by(Value) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
+```
+
+    ## # A tibble: 3 × 3
+    ##   Value count crosslingfreq
+    ##   <chr> <int>         <dbl>
+    ## 1 ɸ         9       0.0411 
+    ## 2 β         6       0.0274 
+    ## 3 ɸʷ        1       0.00457
 
 # References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-Abbott2006" class="csl-entry">
+
+Abbott, Clifford. 2006. *Oneida Teaching Grammar*. University of
+Wisconsin – Green Bay.
+<https://www.uwgb.edu/UWGBCMS/media/Oneida-Language/files/teaching-grammar-revised4.pdf>.
+
+</div>
 
 <div id="ref-Changetal2015Ancestry-constrained" class="csl-entry">
 
@@ -921,6 +1120,13 @@ Diversity.” *PLoS ONE* 11 (7): e0158391.
 
 </div>
 
+<div id="ref-Lounsbury1953" class="csl-entry">
+
+Lounsbury, Floyd G. 1953. *Oneida Verb Morphology*. Yale University
+Publications in Anthropology. New Haven: Yale University Press.
+
+</div>
+
 <div id="ref-maddieson1984" class="csl-entry">
 
 Maddieson, Ian. 1984. *Patterns of Sounds*. Cambridge: Cambridge
@@ -934,6 +1140,14 @@ Marsico, Egidio, Sebastien Flavier, Annemarie Verkerk, and Steven Moran.
 2018. “BDPROTO: A Database of Phonological Inventories from Ancient and
 Reconstructed Languages.” In *Proceedings of the 11th International
 Conference on Language Resources and Evaluation (LREC 2018)*.
+
+</div>
+
+<div id="ref-Michelson1990" class="csl-entry">
+
+Michelson, Karin. 1990. “The Oneida Lexicon.” In *Proceedings of the
+Sixteenth Annual Meeting of the Berkeley Linguistics Society: Special
+Session on General Topics in American Indian*, 16:73–84. 2.
 
 </div>
 
