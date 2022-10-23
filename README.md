@@ -1,7 +1,7 @@
 Supplementary materials: Life of /p/
 ================
 Steven Moran and Adriano Lameira
-(18 September, 2022)
+(23 October, 2022)
 
 -   <a href="#overview" id="toc-overview">Overview</a>
 -   <a href="#analyses" id="toc-analyses">Analyses</a>
@@ -207,7 +207,14 @@ phoible_by_iso_with_p %>% group_by(ISO6393) %>% summarize(n = n()) %>% arrange(d
     ##  9 alw         4
     ## 10 amh         4
     ## # … with 1,939 more rows
-    ## # ℹ Use `print(n = ...)` to see more rows
+
+And ask what percentage of languages in PHOIBLE have p-like sounds.
+
+``` r
+nrow(phoible_by_iso_with_p %>% select(ISO6393) %>% distinct()) / num_languages
+```
+
+    ## [1] 0.9316444
 
 Which are the languages that contain no “p-like” segments?
 
@@ -234,6 +241,14 @@ nrow(phoible_by_iso_no_p)
 
     ## [1] 143
 
+Or about 7% of languages in the sample (see above).
+
+``` r
+nrow(phoible_by_iso_no_p) / num_languages
+```
+
+    ## [1] 0.06835564
+
 One random example is
 [Afar](https://phoible.org/inventories/view/1342#tipa), which does not
 contain a voiceless bilabial plosive, but it does contain its voiced
@@ -258,7 +273,7 @@ ggplot(data=no_p_by_geography, aes(x=longitude,y=latitude)) +
   geom_point()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 Africa is notable for lacking voiceless bilabial plosives (Houis 1974;
 Maddieson 1984; Clements and Rialland 2008) and is interesting because
@@ -336,7 +351,7 @@ ggplot(data=no_bilabials, aes(x=longitude,y=latitude)) +
   geom_point()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
 Languages lacking native bilabial plosives /p/ and /b/ are extremely
 rare in the PHOIBLE sample overall, i.e. 14 observations out of 2092
@@ -495,7 +510,7 @@ ggplot(cross_features, aes(reorder(x = value, -total), y= total)) +
   ggtitle("Feature frequency by language")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
 
 Most languages employ the phonological feature `labial` to encode
 contrastive sounds in their language.
@@ -576,7 +591,7 @@ ggplot(data=b_but_no_p, aes(x=longitude,y=latitude)) +
   geom_point()
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
 
 Mainly in Africa, in which this phenomenon has also been noted as a
 feature north of the equator and in the Arabian penisula. It is also
@@ -666,7 +681,6 @@ bdproto_results %>% filter(is.na(has_p) & is.na(has_b))
 
     ## # A tibble: 0 × 3
     ## # … with 3 variables: BdprotoID <dbl>, has_p <lgl>, has_b <lgl>
-    ## # ℹ Use `colnames()` to see all variable names
 
 Which lack a /p/? 15 out of 253 data points, so around 8%.
 
@@ -704,7 +718,7 @@ around 37%.
 bdproto_results %>% filter(is.na(has_b))
 ```
 
-    ## # A tibble: 94 × 3
+    ## # A tibble: 93 × 3
     ##    BdprotoID has_p has_b
     ##        <dbl> <lgl> <lgl>
     ##  1        10 TRUE  NA   
@@ -717,8 +731,7 @@ bdproto_results %>% filter(is.na(has_b))
     ##  8        26 TRUE  NA   
     ##  9        27 TRUE  NA   
     ## 10        30 TRUE  NA   
-    ## # … with 84 more rows
-    ## # ℹ Use `print(n = ...)` to see more rows
+    ## # … with 83 more rows
 
 Which lack a /p/ but not /b/?
 
@@ -755,7 +768,7 @@ Which lack a /b/ but not /p/?
 bdproto_results %>% filter(is.na(has_b) & has_p)
 ```
 
-    ## # A tibble: 94 × 3
+    ## # A tibble: 93 × 3
     ##    BdprotoID has_p has_b
     ##        <dbl> <lgl> <lgl>
     ##  1        10 TRUE  NA   
@@ -768,8 +781,7 @@ bdproto_results %>% filter(is.na(has_b) & has_p)
     ##  8        26 TRUE  NA   
     ##  9        27 TRUE  NA   
     ## 10        30 TRUE  NA   
-    ## # … with 84 more rows
-    ## # ℹ Use `print(n = ...)` to see more rows
+    ## # … with 83 more rows
 
 Interestingly, no ancient or reconstructed languages in the BDPROTO lack
 both /p/ and /b/. And the general tendency, if either one or the other
@@ -784,7 +796,7 @@ lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(BdprotoID) %>% distin
 nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(BdprotoID) %>% distinct())
 ```
 
-    ## [1] 0.08823529
+    ## [1] 0.0858209
 
 How many data points do not have Glottocodes – a marker of how many
 languages / dialects are reported in BDPROTO – 214 out of 272.
@@ -793,13 +805,13 @@ languages / dialects are reported in BDPROTO – 214 out of 272.
 nrow(bdproto %>% select(BdprotoID) %>% distinct())
 ```
 
-    ## [1] 272
+    ## [1] 268
 
 ``` r
 nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
 ```
 
-    ## [1] 214
+    ## [1] 212
 
 Does the frequency of the presence of bilabial fricatives change if we
 subset the data on Glottocodes? It actually goes up to about 10%.
@@ -810,7 +822,7 @@ lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(Glottocode) %>% disti
 nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
 ```
 
-    ## [1] 0.09813084
+    ## [1] 0.09433962
 
 When compared to PHOIBLE is this prevalance of languages with
 contrastive (or reconstructed) bilabial fricatives greater or less today
@@ -924,7 +936,7 @@ p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
 plot.tree(p, traits.print)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-48-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-50-1.png)<!-- -->
 
 What we find is that within the Indo-European phylogeny the feature
 labial is present in all daughter nodes of the famil tree (which has
@@ -972,7 +984,7 @@ p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
 plot.tree(p, traits.print)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-50-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-52-1.png)<!-- -->
 
 # Exploratory
 

@@ -126,6 +126,12 @@ We summarize their counts.
 phoible_by_iso_with_p %>% group_by(ISO6393) %>% summarize(n = n()) %>% arrange(desc(n))
 ```
 
+And ask what percentage of languages in PHOIBLE have p-like sounds.
+
+```{r}
+nrow(phoible_by_iso_with_p %>% select(ISO6393) %>% distinct()) / num_languages
+```
+
 Which are the languages that contain no "p-like" segments?
 
 ```{r}
@@ -138,6 +144,12 @@ There are quite a few languages without "p-like" segments.
 
 ```{r}
 nrow(phoible_by_iso_no_p)
+```
+
+Or about 7% of languages in the sample (see above).
+
+```{r}
+nrow(phoible_by_iso_no_p) / num_languages
 ```
 
 One random example is [Afar](https://phoible.org/inventories/view/1342#tipa), which does not contain a voiceless bilabial plosive, but it does contain its voiced counterpart "b". Another is [Somali](https://phoible.org/inventories/view/552#tipa) with the same segment configuration within the bilabial plosives. Both languages are also in Africa.
