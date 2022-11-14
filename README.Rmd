@@ -1,5 +1,5 @@
 ---
-title: "Supplementary materials: Life of /p/"
+title: "Supplementary materials: Life of p"
 author: "Steven Moran and Adriano Lameira"
 date: "(`r format(Sys.time(), '%d %B, %Y')`)"
 output:
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, error = FALSE, warning = FALSE, message = FAL
 
 # Overview
 
-This supplementary materials for the manuscript "Life of /p/" uses the R programming language [@R] and the following R libraries [@tidyverse;@knitr;@phytools;@phylotools;@Yu2020-qs;@testthat].
+This supplementary materials for the manuscript "Life of p" uses the R programming language [@R] and the following R libraries [@tidyverse;@knitr;@phytools;@phylotools;@Yu2020-qs;@testthat].
 
 ```{r, message=F, warning=F}
 library(tidyverse)

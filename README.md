@@ -1,7 +1,7 @@
-Supplementary materials: Life of /p/
+Supplementary materials: Life of p
 ================
 Steven Moran and Adriano Lameira
-(23 October, 2022)
+(14 November, 2022)
 
 -   <a href="#overview" id="toc-overview">Overview</a>
 -   <a href="#analyses" id="toc-analyses">Analyses</a>
@@ -22,7 +22,7 @@ Steven Moran and Adriano Lameira
 
 # Overview
 
-This supplementary materials for the manuscript “Life of /p/” uses the R
+This supplementary materials for the manuscript “Life of p” uses the R
 programming language (R Core Team 2021) and the following R libraries
 (Wickham et al. 2019; Xie 2021; Revell 2012; J. Zhang 2017; Yu 2020;
 Wickham 2011).
