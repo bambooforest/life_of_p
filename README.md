@@ -1,7 +1,7 @@
 Supplementary materials: Life of p
 ================
 Steven Moran and Adriano Lameira
-(14 November, 2022)
+(01 December, 2022)
 
 -   <a href="#overview" id="toc-overview">Overview</a>
 -   <a href="#analyses" id="toc-analyses">Analyses</a>
@@ -60,18 +60,21 @@ associated with the Glottolog, a catalog of the world’s languages
 (Hammarström et al. 2020).
 
 ``` r
-phoible <- read_csv(url("https://github.com/phoible/dev/blob/646f5e4f64bfefb7868bf4a3b65bcd1da243976a/data/phoible.csv?raw=true"), 
-                    col_types = c(InventoryID = "i", Marginal = "l", .default = "c"))
+phoible <- read_csv(url("https://github.com/phoible/dev/blob/646f5e4f64bfefb7868bf4a3b65bcd1da243976a/data/phoible.csv?raw=true"),
+  col_types = c(InventoryID = "i", Marginal = "l", .default = "c")
+)
 
-glottolog <- read_csv(url('https://cdstar.shh.mpg.de/bitstreams/EAEA0-E62D-ED67-FD05-0/languages_and_dialects_geo.csv'))
+glottolog <- read_csv(url("https://cdstar.shh.mpg.de/bitstreams/EAEA0-E62D-ED67-FD05-0/languages_and_dialects_geo.csv"))
 
-phoible <- left_join(phoible, glottolog, by = c("Glottocode"="glottocode"))
+phoible <- left_join(phoible, glottolog, by = c("Glottocode" = "glottocode"))
 ```
 
 The data look like this.
 
 ``` r
-phoible %>% head() %>% kable()
+phoible %>%
+  head() %>%
+  kable()
 ```
 
 | InventoryID | Glottocode | ISO6393 | LanguageName | SpecificDialect | GlyphID   | Phoneme | Allophones | Marginal | SegmentClass | Source | tone | stress | syllabic | short | long | consonantal | sonorant | continuant | delayedRelease | approximant | tap | trill | nasal | lateral | labial | round | labiodental | coronal | anterior | distributed | strident | dorsal | high | low | front | back | tense | retractedTongueRoot | advancedTongueRoot | periodicGlottalSource | epilaryngealSource | spreadGlottis | constrictedGlottis | fortis | raisedLarynxEjective | loweredLarynxImplosive | click | name   | isocodes | level    | macroarea | latitude | longitude |
@@ -118,8 +121,14 @@ df <- phoible %>% filter(grepl("p", Phoneme))
 What are they?
 
 ``` r
-ps <- df %>% select(Phoneme) %>% distinct()
-ps <- df %>% select(Phoneme) %>% group_by(Phoneme) %>% summarize(count = n()) %>% arrange(desc(count))
+ps <- df %>%
+  select(Phoneme) %>%
+  distinct()
+ps <- df %>%
+  select(Phoneme) %>%
+  group_by(Phoneme) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
 head(ps) %>% kable()
 ```
 
@@ -144,21 +153,24 @@ ps <- ps %>% filter(!(grepl("kp|pf|mp", Phoneme)))
 ```
 
 Since PHOIBLE may have multiple analyses for the same language variety
-(see exaplantion regarding so-called “doculects” in the [PHOIBLE
+(see explanation regarding so-called “doculects” in the [PHOIBLE
 FAQ](https://phoible.org/faq#inventories-language-codes-doculects-and-sources)),
 we combine the phonological inventories from multiple sources into
 single entries so that we can examine which languages have been reported
 to have certain segments or not.
 
 ``` r
-phoible_by_iso <- phoible %>% select(ISO6393, Phoneme) %>% group_by(ISO6393) %>% distinct()
+phoible_by_iso <- phoible %>%
+  select(ISO6393, Phoneme) %>%
+  group_by(ISO6393) %>%
+  distinct()
 ```
 
 Since the ISO 6393 code `mis` is for languages that are missing a
 language name identifier, we drop those.
 
 ``` r
-phoible_by_iso <- phoible_by_iso %>% filter(ISO6393 != 'mis')
+phoible_by_iso <- phoible_by_iso %>% filter(ISO6393 != "mis")
 ```
 
 How many distinct languages are left once they have been aggregated by
@@ -175,7 +187,9 @@ Now we select from these languages which have a p-like segment.
 
 ``` r
 phoible_by_iso_with_p <- phoible_by_iso %>% filter(Phoneme %in% ps$Phoneme)
-phoible_by_iso_with_p %>% head() %>% kable()
+phoible_by_iso_with_p %>%
+  head() %>%
+  kable()
 ```
 
 | ISO6393 | Phoneme |
@@ -190,7 +204,10 @@ phoible_by_iso_with_p %>% head() %>% kable()
 We summarize their counts.
 
 ``` r
-phoible_by_iso_with_p %>% group_by(ISO6393) %>% summarize(n = n()) %>% arrange(desc(n))
+phoible_by_iso_with_p %>%
+  group_by(ISO6393) %>%
+  summarize(n = n()) %>%
+  arrange(desc(n))
 ```
 
     ## # A tibble: 1,949 × 2
@@ -219,9 +236,15 @@ nrow(phoible_by_iso_with_p %>% select(ISO6393) %>% distinct()) / num_languages
 Which are the languages that contain no “p-like” segments?
 
 ``` r
-phoible_by_iso_no_p <- phoible_by_iso %>% filter(!(ISO6393 %in% phoible_by_iso_with_p$ISO6393)) %>% select(ISO6393) %>% distinct() %>% arrange(ISO6393)
+phoible_by_iso_no_p <- phoible_by_iso %>%
+  filter(!(ISO6393 %in% phoible_by_iso_with_p$ISO6393)) %>%
+  select(ISO6393) %>%
+  distinct() %>%
+  arrange(ISO6393)
 
-phoible_by_iso_no_p %>% head() %>% kable()
+phoible_by_iso_no_p %>%
+  head() %>%
+  kable()
 ```
 
 | ISO6393 |
@@ -261,15 +284,19 @@ Let’s look geographically at which languages lack voiceless bilabial
 plosives.
 
 ``` r
-no_p_by_geography <- phoible %>% filter(ISO6393 %in% phoible_by_iso_no_p$ISO6393) %>% select(ISO6393, latitude, longitude, macroarea) %>% distinct() %>% arrange(ISO6393)
+no_p_by_geography <- phoible %>%
+  filter(ISO6393 %in% phoible_by_iso_no_p$ISO6393) %>%
+  select(ISO6393, latitude, longitude, macroarea) %>%
+  distinct() %>%
+  arrange(ISO6393)
 ```
 
 How do these language points look on a map? There are no data points in
 Eurasia nor Australia, but many in Oceania, Africa, and South America.
 
 ``` r
-ggplot(data=no_p_by_geography, aes(x=longitude,y=latitude)) + 
-  borders("world", colour="gray50", fill="gray50") + 
+ggplot(data = no_p_by_geography, aes(x = longitude, y = latitude)) +
+  borders("world", colour = "gray50", fill = "gray50") +
   geom_point()
 ```
 
@@ -278,7 +305,7 @@ ggplot(data=no_p_by_geography, aes(x=longitude,y=latitude)) +
 Africa is notable for lacking voiceless bilabial plosives (Houis 1974;
 Maddieson 1984; Clements and Rialland 2008) and is interesting because
 within a relatively broad sample of phonological segment borrowings /p/
-is the most frequently borrowewd speech sound (Grossman et al. 2020). In
+is the most frequently borrowed speech sound (Grossman et al. 2020). In
 other words, /p/ seems to have been lost in certain linguistic areas,
 probably due to regular processes of sound change, but then is easily
 re-introduced into languages via borrowing, e.g., Tem (Central Gur,
@@ -286,7 +313,7 @@ Togo), Tigrinya (Semitic, Ethiopia), or !Xóõ (Tuu, Botswana and Namibia)
 (Clements and Rialland 2008). (Similar observations about
 cross-linguistically frequently segments missing in certain world areas,
 which were perhaps lost at some point in the past and this loss then
-inherented by daughter languages and dialects, is reported by Moran,
+inherited by daughter languages and dialects, is reported by Moran,
 Lester, and Grossman (2021)).
 
 So of the languages that lack /p/, how many also lack /b/?
@@ -295,7 +322,10 @@ So of the languages that lack /p/, how many also lack /b/?
 tmp <- phoible_by_iso %>% filter(ISO6393 %in% phoible_by_iso_no_p$ISO6393)
 tmp <- tmp %>% filter(grepl("b", Phoneme))
 tmp <- tmp %>% filter(!grepl("ɡb", Phoneme)) # Let's drop labial velars
-tmp <- tmp %>% select(ISO6393) %>% distinct() %>% arrange(ISO6393)
+tmp <- tmp %>%
+  select(ISO6393) %>%
+  distinct() %>%
+  arrange(ISO6393)
 tmp <- phoible_by_iso_no_p %>% filter(!(ISO6393 %in% tmp$ISO6393))
 tmp %>% kable()
 ```
@@ -321,7 +351,11 @@ tmp %>% kable()
 Where are they spoken?
 
 ``` r
-no_bilabials <- phoible %>% filter(ISO6393 %in% tmp$ISO6393) %>% select(ISO6393, latitude, longitude, macroarea) %>% distinct() %>% arrange(macroarea)
+no_bilabials <- phoible %>%
+  filter(ISO6393 %in% tmp$ISO6393) %>%
+  select(ISO6393, latitude, longitude, macroarea) %>%
+  distinct() %>%
+  arrange(macroarea)
 no_bilabials %>% kable()
 ```
 
@@ -346,8 +380,8 @@ no_bilabials %>% kable()
 They are mainly found in the Americas.
 
 ``` r
-ggplot(data=no_bilabials, aes(x=longitude,y=latitude)) + 
-  borders("world", colour="gray50", fill="gray50") + 
+ggplot(data = no_bilabials, aes(x = longitude, y = latitude)) +
+  borders("world", colour = "gray50", fill = "gray50") +
   geom_point()
 ```
 
@@ -397,13 +431,20 @@ What about languages with no labial sounds at all? First let’s get all
 the languages with labials.
 
 ``` r
-labials <- phoible %>% select(ISO6393, Phoneme) %>% filter(grepl('p|b|m|ɸ|β|ʙ', Phoneme)) %>% distinct()
+labials <- phoible %>%
+  select(ISO6393, Phoneme) %>%
+  filter(grepl("p|b|m|ɸ|β|ʙ", Phoneme)) %>%
+  distinct()
 
-phoible_by_iso_no_labials <- phoible_by_iso %>% filter(!(ISO6393 %in% labials$ISO6393)) %>% select(ISO6393) %>% distinct() %>% arrange(ISO6393)
+phoible_by_iso_no_labials <- phoible_by_iso %>%
+  filter(!(ISO6393 %in% labials$ISO6393)) %>%
+  select(ISO6393) %>%
+  distinct() %>%
+  arrange(ISO6393)
 ```
 
 There are five languages in the total sample that purportedly have no
-kind of labial, /w/ notwitstanding.
+kind of labial, /w/ notwithstanding.
 
 ``` r
 phoible_by_iso_no_labials %>% kable()
@@ -442,7 +483,11 @@ PHOIBLE contain information about their phonetic properties. For example
 the bilabial consonants:
 
 ``` r
-phoible %>% select(Phoneme, SegmentClass, consonantal, labial, periodicGlottalSource, delayedRelease, nasal) %>% filter(Phoneme %in% c('p', 'b', 'm', 'ɸ', 'β', 'ʙ')) %>% distinct() %>% kable()
+phoible %>%
+  select(Phoneme, SegmentClass, consonantal, labial, periodicGlottalSource, delayedRelease, nasal) %>%
+  filter(Phoneme %in% c("p", "b", "m", "ɸ", "β", "ʙ")) %>%
+  distinct() %>%
+  kable()
 ```
 
 | Phoneme | SegmentClass | consonantal | labial | periodicGlottalSource | delayedRelease | nasal |
@@ -466,16 +511,23 @@ In other work, we have developed an algorithm for identifying which
 phonological features are needed to encode each language’s segments.
 
 ``` r
-load('../the_role_of_features/scripts/new_answers.RData')
+load("../the_role_of_features/scripts/new_answers.RData")
 ```
 
 ``` r
 # The data is a list of matrices in R, so we flatten those and then summarize their presence and plot the results.
 features <- lapply(new_answers, function(x) unique(as.vector((x))))
-features <- features %>% enframe() %>% unnest(value)
+features <- features %>%
+  enframe() %>%
+  unnest(value)
 features <- unnest(features, value) %>% arrange(name, value) # save this for later processing
-cross_features <- features %>% group_by(name, value) %>% summarize(total = n())
-cross_features <- cross_features %>% group_by(value)  %>% summarize(total = n()) %>% arrange (desc(total))
+cross_features <- features %>%
+  group_by(name, value) %>%
+  summarize(total = n())
+cross_features <- cross_features %>%
+  group_by(value) %>%
+  summarize(total = n()) %>%
+  arrange(desc(total))
 head(cross_features)
 ```
 
@@ -503,10 +555,10 @@ languages cross-linguistically. The feature periodic glottal source, aka
 voice, is third.
 
 ``` r
-ggplot(cross_features, aes(reorder(x = value, -total), y= total)) +
-  geom_bar(stat="identity") +
-  theme(axis.text.x=element_text(angle=45, hjust=1)) +
-  labs(x = "Feature", y = "Nr. of languages")+
+ggplot(cross_features, aes(reorder(x = value, -total), y = total)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = "Feature", y = "Nr. of languages") +
   ggtitle("Feature frequency by language")
 ```
 
@@ -520,8 +572,10 @@ labial in our phylogenetic analysis below, we first create a table with
 those values.
 
 ``` r
-labial_features <- features %>% filter(value == 'labial')
-traits <- phoible %>% select(InventoryID, Glottocode) %>% distinct()
+labial_features <- features %>% filter(value == "labial")
+traits <- phoible %>%
+  select(InventoryID, Glottocode) %>%
+  distinct()
 traits <- left_join(traits, labial_features, by = c("InventoryID" = "name"))
 
 traits <- traits %>% mutate(value = replace(value, is.na(value), "N"))
@@ -539,12 +593,15 @@ traits <- traits %>% filter(!is.na(taxa))
 # tmp %>% filter(grepl("F,T", labials))
 
 # For now we just take the first result and discard the rest
-traits <- traits %>% group_by(taxa) %>% slice_head() %>% ungroup()
+traits <- traits %>%
+  group_by(taxa) %>%
+  slice_head() %>%
+  ungroup()
 
 # Sometimes... just (a)R(rgh)
 traits <- as.data.frame(traits)
 rownames(traits) <- NULL
-rownames(traits) <- traits[,1]
+rownames(traits) <- traits[, 1]
 ```
 
 ## Labials in ancient and reconstructed languages
@@ -558,12 +615,19 @@ lack /p/ but contain /b/?
 phoible_by_iso_with_b <- phoible %>% filter(grepl("b", Phoneme))
 phoible_by_iso_with_b <- phoible_by_iso_with_b %>% filter(!(ISO6393 == "mis"))
 phoible_by_iso_with_b <- phoible_by_iso_with_b %>% filter(!grepl("ɡb", Phoneme)) # Let's drop labial velars
-phoible_by_iso_with_b <- phoible_by_iso_with_b %>% select(ISO6393) %>% distinct() %>% arrange(ISO6393)
+phoible_by_iso_with_b <- phoible_by_iso_with_b %>%
+  select(ISO6393) %>%
+  distinct() %>%
+  arrange(ISO6393)
 
-with_p <- phoible_by_iso_with_p %>% select(ISO6393) %>% distinct()
+with_p <- phoible_by_iso_with_p %>%
+  select(ISO6393) %>%
+  distinct()
 with_p$has_p <- TRUE
 
-with_b <- phoible_by_iso_with_b %>% select(ISO6393) %>% distinct()
+with_b <- phoible_by_iso_with_b %>%
+  select(ISO6393) %>%
+  distinct()
 with_b$has_b <- TRUE
 
 results <- full_join(with_p, with_b)
@@ -582,20 +646,24 @@ nrow(results) / num_languages
 Where are they spoken?
 
 ``` r
-b_but_no_p <- phoible %>% filter(ISO6393 %in% results$ISO6393) %>% select(ISO6393, latitude, longitude, macroarea) %>% distinct() %>% arrange(macroarea)
+b_but_no_p <- phoible %>%
+  filter(ISO6393 %in% results$ISO6393) %>%
+  select(ISO6393, latitude, longitude, macroarea) %>%
+  distinct() %>%
+  arrange(macroarea)
 ```
 
 ``` r
-ggplot(data=b_but_no_p, aes(x=longitude,y=latitude)) + 
-  borders("world", colour="gray50", fill="gray50") + 
+ggplot(data = b_but_no_p, aes(x = longitude, y = latitude)) +
+  borders("world", colour = "gray50", fill = "gray50") +
   geom_point()
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
 
 Mainly in Africa, in which this phenomenon has also been noted as a
-feature north of the equator and in the Arabian penisula. It is also
-known that Arabi lost its /p/ in prehistoric times, but it is unclear
+feature north of the equator and in the Arabian peninsula. It is also
+known that Arabic lost its /p/ in prehistoric times, but it is unclear
 whether the lack of /p/ in these areas is due to Arabic’s influence as a
 prestige language or whether the effect itself is even more ancient.
 
@@ -607,8 +675,10 @@ Grossman, and Verkerk 2020). We can evaluate these (proto) languages for
 the presence or absence of bilabials in ancient times.
 
 ``` r
-bdproto <- read_csv(url('https://raw.githubusercontent.com/bdproto/bdproto/master/bdproto.csv'))
-num_languages_bdproto <- bdproto %>% select(BdprotoID) %>% distinct()
+bdproto <- read_csv(url("https://raw.githubusercontent.com/bdproto/bdproto/master/bdproto.csv"))
+num_languages_bdproto <- bdproto %>%
+  select(BdprotoID) %>%
+  distinct()
 ```
 
 We note that by using BDPROTO phonological inventory IDs we count
@@ -623,7 +693,9 @@ bdproto <- bdproto %>% filter(!(is.na(BdprotoID)))
 
 bdproto_with_b <- bdproto %>% filter(grepl("b", Phoneme))
 bdproto_with_b <- bdproto_with_b %>% filter(!grepl("ɡb|mb", Phoneme))
-bdproto_with_b %>% select(Phoneme) %>% distinct()
+bdproto_with_b %>%
+  select(Phoneme) %>%
+  distinct()
 ```
 
     ## # A tibble: 9 × 1
@@ -640,12 +712,17 @@ bdproto_with_b %>% select(Phoneme) %>% distinct()
     ## 9 bʼ
 
 ``` r
-bdproto_with_b <- bdproto_with_b %>% select(BdprotoID) %>% distinct() %>% arrange(BdprotoID)
+bdproto_with_b <- bdproto_with_b %>%
+  select(BdprotoID) %>%
+  distinct() %>%
+  arrange(BdprotoID)
 bdproto_with_b$has_b <- TRUE
 
 bdproto_with_p <- bdproto %>% filter(grepl("p", Phoneme))
 bdproto_with_p <- bdproto_with_p %>% filter(!grepl("kp|mp", Phoneme))
-bdproto_with_p %>% select(Phoneme) %>% distinct()
+bdproto_with_p %>%
+  select(Phoneme) %>%
+  distinct()
 ```
 
     ## # A tibble: 13 × 1
@@ -666,7 +743,10 @@ bdproto_with_p %>% select(Phoneme) %>% distinct()
     ## 13 ˀp
 
 ``` r
-bdproto_with_p <- bdproto_with_p %>% select(BdprotoID) %>% distinct() %>% arrange(BdprotoID)
+bdproto_with_p <- bdproto_with_p %>%
+  select(BdprotoID) %>%
+  distinct() %>%
+  arrange(BdprotoID)
 bdproto_with_p$has_p <- TRUE
 
 bdproto_results <- full_join(bdproto_with_p, bdproto_with_b)
@@ -792,7 +872,9 @@ reported in BDPROTO have them.
 
 ``` r
 bdproto_bialbials <- bdproto %>% filter(grepl("ɸ|β", Phoneme))
-lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(BdprotoID) %>% distinct()
+lgs_with_bdproto_bialbials <- bdproto_bialbials %>%
+  select(BdprotoID) %>%
+  distinct()
 nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(BdprotoID) %>% distinct())
 ```
 
@@ -817,14 +899,18 @@ Does the frequency of the presence of bilabial fricatives change if we
 subset the data on Glottocodes? It actually goes up to about 10%.
 
 ``` r
-bdproto_bialbials <- bdproto %>% filter(!is.na(Glottocode)) %>% filter(grepl("ɸ|β", Phoneme))
-lgs_with_bdproto_bialbials <- bdproto_bialbials %>% select(Glottocode) %>% distinct()
+bdproto_bialbials <- bdproto %>%
+  filter(!is.na(Glottocode)) %>%
+  filter(grepl("ɸ|β", Phoneme))
+lgs_with_bdproto_bialbials <- bdproto_bialbials %>%
+  select(Glottocode) %>%
+  distinct()
 nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(Glottocode) %>% filter(!is.na(Glottocode)) %>% distinct())
 ```
 
     ## [1] 0.09433962
 
-When compared to PHOIBLE is this prevalance of languages with
+When compared to PHOIBLE is this prevalence of languages with
 contrastive (or reconstructed) bilabial fricatives greater or less today
 than in the past? We expect that the percentage to go down, as sounds
 shift to for example labiodentals, which have a greater intensity of
@@ -837,8 +923,12 @@ has a higher percentage of bilabials than in the BDPROTO study at nearly
 17%.
 
 ``` r
-phoible_bialbials <- phoible %>% filter(!is.na(ISO6393)) %>% filter(grepl("ɸ|β", Phoneme))
-lgs_with_phoible_bialbials <- phoible_bialbials %>% select(ISO6393) %>% distinct()
+phoible_bialbials <- phoible %>%
+  filter(!is.na(ISO6393)) %>%
+  filter(grepl("ɸ|β", Phoneme))
+lgs_with_phoible_bialbials <- phoible_bialbials %>%
+  select(ISO6393) %>%
+  distinct()
 nrow(lgs_with_phoible_bialbials) / nrow(phoible %>% select(ISO6393) %>% filter(!is.na(ISO6393)) %>% distinct())
 ```
 
@@ -863,14 +953,20 @@ PruneTraits <- function(traits, tip.labels) {
   return(traits.cut)
 }
 
-PruneSummaryTree <- function(nexus.file, codes, which=c('LanguageName', 'ISO', 'Glottocode')) {
+PruneSummaryTree <- function(nexus.file, codes, which = c("LanguageName", "ISO", "Glottocode")) {
   # Trees have tip labels like "Ache<ache1246|guq>" with language name and Glottolog codes. Take Glottolog code. Return tree.
   tree <- read.nexus(nexus.file)
   switch(which,
-         Glottocode = {tree$tip.label <- gsub('(.*)(<)(.*)(\\|)(.*)(>)','\\3', tree$tip.label)},
-         ISO = {tree$tip.label <- gsub('(.*)(<)(.*)(\\|)(.*)(>)','\\5', tree$tip.label)},
-         LanguageName = {tree$tip.label <- gsub('(.*)(<)(.*)(\\|)(.*)(>)','\\1', tree$tip.label)}
-         )
+    Glottocode = {
+      tree$tip.label <- gsub("(.*)(<)(.*)(\\|)(.*)(>)", "\\3", tree$tip.label)
+    },
+    ISO = {
+      tree$tip.label <- gsub("(.*)(<)(.*)(\\|)(.*)(>)", "\\5", tree$tip.label)
+    },
+    LanguageName = {
+      tree$tip.label <- gsub("(.*)(<)(.*)(\\|)(.*)(>)", "\\1", tree$tip.label)
+    }
+  )
   # Drop tips missing in traits
   tree <- drop.tip(tree, setdiff(tree$tip.label, codes))
   # Remove any remaining duplicates.
@@ -889,14 +985,14 @@ First we prune the Indo-European phylogeny as published by (Chang et al.
 
 ``` r
 # Tree paths
-tree <- 'trees/ie-c-tree.nex'
-pr_sum_tree <- PruneSummaryTree(tree, traits$taxa, 'Glottocode')
+tree <- "trees/ie-c-tree.nex"
+pr_sum_tree <- PruneSummaryTree(tree, traits$taxa, "Glottocode")
 
 # Prune the traits data to match the tree tips for analysis
 data <- PruneTraits(traits, pr_sum_tree$tip.label)
 
 # Combine them into a list of R data objects for analysis with the BT3 wrapper
-pr_sum_tree <- list(data=data, tree=pr_sum_tree)
+pr_sum_tree <- list(data = data, tree = pr_sum_tree)
 ```
 
 Here is a convenience function for plotting the phylogeny together with
@@ -904,24 +1000,30 @@ the presence of absence of a discrete variable.
 
 ``` r
 # Define color schema
-color.scheme <- c('blue','red')
-names(color.scheme) <- c('Y','N')
+color.scheme <- c("blue", "red")
+names(color.scheme) <- c("Y", "N")
 
 # Function to reverse time in the plot
-reverse.time <- function(p) { p$data$x <- p$data$x - max(p$data$x); return(p) }
+reverse.time <- function(p) {
+  p$data$x <- p$data$x - max(p$data$x)
+  return(p)
+}
 
 # Create tree and heatmap figure
 plot.tree <- function(pr_sum_tree_plot, features_plot) {
   gheatmap(pr_sum_tree_plot, features_plot,
-           colnames_position='top', color='black',
-           colnames_offset_y = 0.1, font.size = 2.5,
-           width=0.4, offset = 8) +
-    scale_fill_manual(name="", values=color.scheme) + 
-    scale_x_continuous(breaks=c(-6000,-4000,-2000,0)) +
+    colnames_position = "top", color = "black",
+    colnames_offset_y = 0.1, font.size = 2.5,
+    width = 0.4, offset = 8
+  ) +
+    scale_fill_manual(name = "", values = color.scheme) +
+    scale_x_continuous(breaks = c(-6000, -4000, -2000, 0)) +
     scale_y_continuous(expand = c(-0.01, 1)) +
-    theme_tree2(axis.text.x=element_text(size=8)) +
-    theme(legend.position='none',  
-          axis.ticks=element_line(color='grey'))
+    theme_tree2(axis.text.x = element_text(size = 8)) +
+    theme(
+      legend.position = "none",
+      axis.ticks = element_line(color = "grey")
+    )
 }
 ```
 
@@ -931,15 +1033,15 @@ labial as a contrastive phonological feature) on the phylogeny.
 ``` r
 traits.print <- pr_sum_tree$data %>% select(has_labial)
 
-p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
-  geom_tiplab(align=T, linesize = .1, size = 2) 
+p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize = T, right = T)) +
+  geom_tiplab(align = T, linesize = .1, size = 2)
 plot.tree(p, traits.print)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-50-1.png)<!-- -->
 
 What we find is that within the Indo-European phylogeny the feature
-labial is present in all daughter nodes of the famil tree (which has
+labial is present in all daughter nodes of the family tree (which has
 been pruned to the languages that we have information about in PHOIBLE).
 Thus, we cannot generate for example a stochastic character mapping on
 the Indo-European tree because there is only one dimension, i.e., one
@@ -960,14 +1062,14 @@ Next we prune the Sino-Tibetan phylogeny as published by M. Zhang et al.
 
 ``` r
 # Tree paths
-tree <- 'trees/sinotibetan-z-tree.nex'
-pr_sum_tree <- PruneSummaryTree(tree, traits$taxa, 'Glottocode')
+tree <- "trees/sinotibetan-z-tree.nex"
+pr_sum_tree <- PruneSummaryTree(tree, traits$taxa, "Glottocode")
 
 # Prune the traits data to match the tree tips for analysis
 data <- PruneTraits(traits, pr_sum_tree$tip.label)
 
 # Combine them into a list of R data objects for analysis with the BT3 wrapper
-pr_sum_tree <- list(data=data, tree=pr_sum_tree)
+pr_sum_tree <- list(data = data, tree = pr_sum_tree)
 ```
 
 We plot at the distribution of the feature labial in Sino-Tibetan.
@@ -979,8 +1081,8 @@ by spoken languages.
 ``` r
 traits.print <- pr_sum_tree$data %>% select(has_labial)
 
-p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize=T, right=T)) +
-  geom_tiplab(align=T, linesize = .1, size = 2) 
+p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize = T, right = T)) +
+  geom_tiplab(align = T, linesize = .1, size = 2)
 plot.tree(p, traits.print)
 ```
 
@@ -991,14 +1093,14 @@ plot.tree(p, traits.print)
 Are there any languages with phi that lack p/b?
 
 ``` r
-x <- has_phi <- phoible %>% 
+x <- has_phi <- phoible %>%
   filter(grepl("ɸ", Phoneme)) %>%
-  select(InventoryID) %>% 
+  select(InventoryID) %>%
   distinct()
 
 y <- phoible %>%
-  filter(grepl("p", Phoneme)) %>% 
-  select(InventoryID) %>% 
+  filter(grepl("p", Phoneme)) %>%
+  select(InventoryID) %>%
   distinct()
 
 which(!(x$InventoryID %in% y$InventoryID))
@@ -1022,11 +1124,11 @@ Todos:
 What about in segbo? Very few data points overall.
 
 ``` r
-values <- read_csv(url('https://raw.githubusercontent.com/cldf-datasets/segbo/master/cldf/values.csv'))
+values <- read_csv(url("https://raw.githubusercontent.com/cldf-datasets/segbo/master/cldf/values.csv"))
 ```
 
 ``` r
-values %>% 
+values %>%
   filter(grepl("p", Value)) %>%
   select(Value) %>%
   group_by(Value) %>%
@@ -1053,7 +1155,7 @@ values %>%
     ## 13 pʷʼ       1       0.00457
 
 ``` r
-values %>% 
+values %>%
   filter(grepl("[ɸβ]", Value)) %>%
   select(Value) %>%
   group_by(Value) %>%
