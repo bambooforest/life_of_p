@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # Overview
 
-This supplementary materials for the manuscript "Life of p" uses the R programming language [@R] and the following R libraries [@tidyverse;@knitr;@phytools;@phylotools;@Yu2020-qs;@testthat].
+This [RMarkdown report](https://rmarkdown.rstudio.com) contains supplementary materials for the manuscript "Life of p: A consonant older than speech". It uses the R programming language [@R] and the following R libraries [@tidyverse;@knitr;@phytools;@phylotools;@Yu2020-qs;@testthat]:
 
 ```{r, message=F, warning=F}
 library(tidyverse)
@@ -31,10 +31,10 @@ library(testthat)
 
 In what follows, we undertake several analyses including:
 
-* investigating the cross-linguistic frequency of labial segments including /p/ and /b/ in a large sample of the world's languages
-* examining how common the contrastive feature labial is in the documented phonological inventories of the world
-* identifying the presence of labial segments in ancient and reconstructed languages
-* looking at labials in language families from a diachronic perspective, i.e., investigating whether they are prominent or not within large language families for which we have robust computational phylogenetics data
+* Investigating the cross-linguistic frequency of labial segments including /p/ and /b/ in a large sample of the world's languages
+* Examining how common the contrastive feature labial is in the documented phonological inventories of the world
+* Identifying the presence of labial segments in ancient and reconstructed languages
+* Looking at labials in language families from a diachronic perspective, i.e., investigating whether they are prominent or not within large language families for which we have robust computational phylogenetics data
 
 
 # Analyses
@@ -308,7 +308,7 @@ A phonological inventory can be described in terms of these contrastive phonetic
 In other work, we have developed an algorithm for identifying which phonological features are needed to encode each language's segments.
 
 ```{r}
-load("../the_role_of_features/scripts/new_answers.RData")
+load("new_answers.RData")
 ```
 
 ```{r}
@@ -671,63 +671,6 @@ p <- reverse.time(ggtree(pr_sum_tree$tree, ladderize = T, right = T)) +
   geom_tiplab(align = T, linesize = .1, size = 2)
 plot.tree(p, traits.print)
 ```
-
-# Exploratory
-
-Are there any languages with phi that lack p/b?
-
-```{r}
-x <- has_phi <- phoible %>%
-  filter(grepl("ɸ", Phoneme)) %>%
-  select(InventoryID) %>%
-  distinct()
-
-y <- phoible %>%
-  filter(grepl("p", Phoneme)) %>%
-  select(InventoryID) %>%
-  distinct()
-
-which(!(x$InventoryID %in% y$InventoryID))
-```
-
-
-# Borrowability
-
-And SegBo? Is it often borrowed in areas where they do not have it?
-
-https://www.researchgate.net/publication/335740469_The_bilabial_trills_of_Ahamb_Vanuatu_Acoustic_and_articulatory_properties
-
-Todos:
-
-- Analyze SegBo -- is it often borrowed in areas where they do not have it?
-- get the borrowability score of segments and labials from Elad
-
-What about in segbo? Very few data points overall.
-
-```{r}
-values <- read_csv(url("https://raw.githubusercontent.com/cldf-datasets/segbo/master/cldf/values.csv"))
-```
-
-```{r}
-values %>%
-  filter(grepl("p", Value)) %>%
-  select(Value) %>%
-  group_by(Value) %>%
-  summarize(count = n()) %>%
-  arrange(desc(count)) %>%
-  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
-```
-
-```{r}
-values %>%
-  filter(grepl("[ɸβ]", Value)) %>%
-  select(Value) %>%
-  group_by(Value) %>%
-  summarize(count = n()) %>%
-  arrange(desc(count)) %>%
-  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
-```
-
 
 
 # References

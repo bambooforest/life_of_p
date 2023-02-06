@@ -1,31 +1,26 @@
 Supplementary materials: Life of p
 ================
 Steven Moran and Adriano Lameira
-(01 December, 2022)
+(06 February, 2023)
 
--   <a href="#overview" id="toc-overview">Overview</a>
--   <a href="#analyses" id="toc-analyses">Analyses</a>
-    -   <a href="#modern-cross-linguistic-segment-frequencies"
-        id="toc-modern-cross-linguistic-segment-frequencies">Modern
-        cross-linguistic segment frequencies</a>
-    -   <a href="#the-feature-labial" id="toc-the-feature-labial">The feature
-        labial</a>
-    -   <a href="#labials-in-ancient-and-reconstructed-languages"
-        id="toc-labials-in-ancient-and-reconstructed-languages">Labials in
-        ancient and reconstructed languages</a>
-    -   <a href="#labials-from-a-diachronic-perspective"
-        id="toc-labials-from-a-diachronic-perspective">Labials from a diachronic
-        perspective</a>
--   <a href="#exploratory" id="toc-exploratory">Exploratory</a>
--   <a href="#borrowability" id="toc-borrowability">Borrowability</a>
--   <a href="#references" id="toc-references">References</a>
+- [Overview](#overview)
+- [Analyses](#analyses)
+  - [Modern cross-linguistic segment
+    frequencies](#modern-cross-linguistic-segment-frequencies)
+  - [The feature labial](#the-feature-labial)
+  - [Labials in ancient and reconstructed
+    languages](#labials-in-ancient-and-reconstructed-languages)
+  - [Labials from a diachronic
+    perspective](#labials-from-a-diachronic-perspective)
+- [References](#references)
 
 # Overview
 
-This supplementary materials for the manuscript “Life of p” uses the R
-programming language (R Core Team 2021) and the following R libraries
-(Wickham et al. 2019; Xie 2021; Revell 2012; J. Zhang 2017; Yu 2020;
-Wickham 2011).
+This [RMarkdown report](https://rmarkdown.rstudio.com) contains
+supplementary materials for the manuscript “Life of p: A consonant older
+than speech”. It uses the R programming language (R Core Team 2021) and
+the following R libraries (Wickham et al. 2019; Xie 2021; Revell 2012;
+J. Zhang 2017; Yu 2020; Wickham 2011):
 
 ``` r
 library(tidyverse)
@@ -38,16 +33,16 @@ library(testthat)
 
 In what follows, we undertake several analyses including:
 
--   investigating the cross-linguistic frequency of labial segments
-    including /p/ and /b/ in a large sample of the world’s languages
--   examining how common the contrastive feature labial is in the
-    documented phonological inventories of the world
--   identifying the presence of labial segments in ancient and
-    reconstructed languages
--   looking at labials in language families from a diachronic
-    perspective, i.e., investigating whether they are prominent or not
-    within large language families for which we have robust
-    computational phylogenetics data
+- Investigating the cross-linguistic frequency of labial segments
+  including /p/ and /b/ in a large sample of the world’s languages
+- Examining how common the contrastive feature labial is in the
+  documented phonological inventories of the world
+- Identifying the presence of labial segments in ancient and
+  reconstructed languages
+- Looking at labials in language families from a diachronic perspective,
+  i.e., investigating whether they are prominent or not within large
+  language families for which we have robust computational phylogenetics
+  data
 
 # Analyses
 
@@ -393,21 +388,21 @@ languages (0.007%). They include North American languages like Cherokee
 and Eyak that lack labials except the nasal /m/, which is reportedly
 rare or only occur in loanwords:
 
--   <https://phoible.org/inventories/view/280#tipa>
--   <https://phoible.org/inventories/view/325#tipa>
+- <https://phoible.org/inventories/view/280#tipa>
+- <https://phoible.org/inventories/view/325#tipa>
 
 And Wichita with a cross-linguistically unusual phonology that lacks
 pure labials (e.g., /p/, /b/, and /m/), although it has the voiced
 labial-velar approximant /w/ and the labiovelar /kʷ/.
 
--   <https://phoible.org/inventories/view/611#tipa>
+- <https://phoible.org/inventories/view/611#tipa>
 
 In East Africa, the languages include Kikamba, Kuria, Chindali,
 respectively:
 
--   <https://phoible.org/inventories/view/1443#tipa>
--   <https://phoible.org/inventories/view/758#tipa>
--   <https://phoible.org/inventories/view/1471#tipa>
+- <https://phoible.org/inventories/view/1443#tipa>
+- <https://phoible.org/inventories/view/758#tipa>
+- <https://phoible.org/inventories/view/1471#tipa>
 
 Kikamba and Kuria both have a phonemic voiced bilabial fricative /β/ and
 bilabial nasal /m/. Chindali has /m/, but lacks the voiceless and voiced
@@ -417,11 +412,11 @@ The languages reported in South America, Enawené-Nawé, Yekwana, Waiwai,
 Taushiro, Ofayé, all contain /w/, and /m/, /β/, or /kʷ/ to various
 extents.
 
--   <https://phoible.org/inventories/view/1818#tipa>
--   <https://phoible.org/inventories/view/1879#tipa>
--   <https://phoible.org/inventories/view/1886#tipa>
--   <https://phoible.org/inventories/view/1936#tipa>
--   <https://phoible.org/inventories/view/1968#tipa>
+- <https://phoible.org/inventories/view/1818#tipa>
+- <https://phoible.org/inventories/view/1879#tipa>
+- <https://phoible.org/inventories/view/1886#tipa>
+- <https://phoible.org/inventories/view/1936#tipa>
+- <https://phoible.org/inventories/view/1968#tipa>
 
 Thus, even when languages lack pure /p/ and /b/, there tends to me to
 some extent the phonological feature labial still present in the
@@ -458,12 +453,12 @@ phoible_by_iso_no_labials %>% kable()
 | wic     |
 | wya     |
 
--   <https://phoible.org/inventories/view/77#tipa>
--   <https://phoible.org/inventories/view/1968#tipa>
--   <https://phoible.org/inventories/view/1936#tipa>
--   <https://phoible.org/inventories/view/74#tipa>
--   <https://phoible.org/inventories/view/611#tipa>
--   <https://phoible.org/inventories/view/885#tipa>
+- <https://phoible.org/inventories/view/77#tipa>
+- <https://phoible.org/inventories/view/1968#tipa>
+- <https://phoible.org/inventories/view/1936#tipa>
+- <https://phoible.org/inventories/view/74#tipa>
+- <https://phoible.org/inventories/view/611#tipa>
+- <https://phoible.org/inventories/view/885#tipa>
 
 Of the five languages (and six doculects) listed above, only Oneida does
 not list the voiced labial-velar approximant /w/ as contrastive.
@@ -511,7 +506,7 @@ In other work, we have developed an algorithm for identifying which
 phonological features are needed to encode each language’s segments.
 
 ``` r
-load("../the_role_of_features/scripts/new_answers.RData")
+load("new_answers.RData")
 ```
 
 ``` r
@@ -1087,89 +1082,6 @@ plot.tree(p, traits.print)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-52-1.png)<!-- -->
-
-# Exploratory
-
-Are there any languages with phi that lack p/b?
-
-``` r
-x <- has_phi <- phoible %>%
-  filter(grepl("ɸ", Phoneme)) %>%
-  select(InventoryID) %>%
-  distinct()
-
-y <- phoible %>%
-  filter(grepl("p", Phoneme)) %>%
-  select(InventoryID) %>%
-  distinct()
-
-which(!(x$InventoryID %in% y$InventoryID))
-```
-
-    ##  [1]   2  12  30  34  38  39  41  52  57  58  72  75  81  82 112 114 117 118 122
-    ## [20] 146 149
-
-# Borrowability
-
-And SegBo? Is it often borrowed in areas where they do not have it?
-
-<https://www.researchgate.net/publication/335740469_The_bilabial_trills_of_Ahamb_Vanuatu_Acoustic_and_articulatory_properties>
-
-Todos:
-
--   Analyze SegBo – is it often borrowed in areas where they do not have
-    it?
--   get the borrowability score of segments and labials from Elad
-
-What about in segbo? Very few data points overall.
-
-``` r
-values <- read_csv(url("https://raw.githubusercontent.com/cldf-datasets/segbo/master/cldf/values.csv"))
-```
-
-``` r
-values %>%
-  filter(grepl("p", Value)) %>%
-  select(Value) %>%
-  group_by(Value) %>%
-  summarize(count = n()) %>%
-  arrange(desc(count)) %>%
-  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
-```
-
-    ## # A tibble: 13 × 3
-    ##    Value count crosslingfreq
-    ##    <chr> <int>         <dbl>
-    ##  1 p        48       0.219  
-    ##  2 pʰ        8       0.0365 
-    ##  3 kp        3       0.0137 
-    ##  4 pʲ        2       0.00913
-    ##  5 pʲʰ       2       0.00913
-    ##  6 pʼ        2       0.00913
-    ##  7 pˤ        2       0.00913
-    ##  8 mp        1       0.00457
-    ##  9 ŋmkp      1       0.00457
-    ## 10 pʃʰ       1       0.00457
-    ## 11 pʷ        1       0.00457
-    ## 12 pʷʰ       1       0.00457
-    ## 13 pʷʼ       1       0.00457
-
-``` r
-values %>%
-  filter(grepl("[ɸβ]", Value)) %>%
-  select(Value) %>%
-  group_by(Value) %>%
-  summarize(count = n()) %>%
-  arrange(desc(count)) %>%
-  mutate(crosslingfreq = count / nrow(values %>% select(Value) %>% distinct()))
-```
-
-    ## # A tibble: 3 × 3
-    ##   Value count crosslingfreq
-    ##   <chr> <int>         <dbl>
-    ## 1 ɸ         9       0.0411 
-    ## 2 β         6       0.0274 
-    ## 3 ɸʷ        1       0.00457
 
 # References
 
