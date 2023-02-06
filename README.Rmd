@@ -1,6 +1,6 @@
 ---
 title: "Supplementary materials: Life of p"
-author: "Steven Moran and Adriano Lameira"
+author: "Steven Moran and Adriano Lameira\n"
 date: "(`r format(Sys.time(), '%d %B, %Y')`)"
 output:
   github_document:
