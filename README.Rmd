@@ -15,6 +15,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+<!-- For PDF:
+  pdf_document:
+      latex_engine: xelatex
+-->
 
 # Overview
 
@@ -57,6 +61,7 @@ The data look like this.
 
 ```{r}
 phoible %>%
+  select(InventoryID, LanguageName, Phoneme) %>%
   head() %>%
   kable()
 ```

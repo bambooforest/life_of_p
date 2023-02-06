@@ -15,6 +15,11 @@ Steven Moran and Adriano Lameira
     perspective](#labials-from-a-diachronic-perspective)
 - [References](#references)
 
+<!-- For PDF:
+  pdf_document:
+      latex_engine: xelatex
+-->
+
 # Overview
 
 This [RMarkdown report](https://rmarkdown.rstudio.com) contains
@@ -69,18 +74,19 @@ The data look like this.
 
 ``` r
 phoible %>%
+  select(InventoryID, LanguageName, Phoneme) %>%
   head() %>%
   kable()
 ```
 
-| InventoryID | Glottocode | ISO6393 | LanguageName | SpecificDialect | GlyphID   | Phoneme | Allophones | Marginal | SegmentClass | Source | tone | stress | syllabic | short | long | consonantal | sonorant | continuant | delayedRelease | approximant | tap | trill | nasal | lateral | labial | round | labiodental | coronal | anterior | distributed | strident | dorsal | high | low | front | back | tense | retractedTongueRoot | advancedTongueRoot | periodicGlottalSource | epilaryngealSource | spreadGlottis | constrictedGlottis | fortis | raisedLarynxEjective | loweredLarynxImplosive | click | name   | isocodes | level    | macroarea | latitude | longitude |
-|------------:|:-----------|:--------|:-------------|:----------------|:----------|:--------|:-----------|:---------|:-------------|:-------|:-----|:-------|:---------|:------|:-----|:------------|:---------|:-----------|:---------------|:------------|:----|:------|:------|:--------|:-------|:------|:------------|:--------|:---------|:------------|:---------|:-------|:-----|:----|:------|:-----|:------|:--------------------|:-------------------|:----------------------|:-------------------|:--------------|:-------------------|:-------|:---------------------|:-----------------------|:------|:-------|:---------|:---------|:----------|---------:|----------:|
-|           1 | kore1280   | kor     | Korean       | NA              | 0068      | h       | ç h ɦ      | NA       | consonant    | spa    | 0    | \-     | \-       | \-    | \-   | \-          | \-       | \+         | \+             | \-          | \-  | \-    | \-    | \-      | \-     | 0     | 0           | \-      | 0        | 0           | 0        | \-     | 0    | 0   | 0     | 0    | 0     | 0                   | 0                  | \-                    | \-                 | \+            | \-                 | \-     | \-                   | \-                     | \-    | Korean | kor      | language | Eurasia   |     37.5 |       128 |
-|           1 | kore1280   | kor     | Korean       | NA              | 006A      | j       | j          | NA       | consonant    | spa    | 0    | \-     | \-       | \-    | \-   | \-          | \+       | \+         | 0              | \+          | \-  | \-    | \-    | \-      | \-     | 0     | 0           | \-      | 0        | 0           | 0        | \+     | \+   | \-  | \+    | \-   | \+    | 0                   | 0                  | \+                    | \-                 | \-            | \-                 | \-     | \-                   | \-                     | \-    | Korean | kor      | language | Eurasia   |     37.5 |       128 |
-|           1 | kore1280   | kor     | Korean       | NA              | 006B      | k       | k̚ ɡ k      | NA       | consonant    | spa    | 0    | \-     | \-       | \-    | \-   | \+          | \-       | \-         | \-             | \-          | \-  | \-    | \-    | \-      | \-     | 0     | 0           | \-      | 0        | 0           | 0        | \+     | \+   | \-  | \-    | \-   | 0     | 0                   | 0                  | \-                    | \-                 | \-            | \-                 | \-     | \-                   | \-                     | \-    | Korean | kor      | language | Eurasia   |     37.5 |       128 |
-|           1 | kore1280   | kor     | Korean       | NA              | 006B+02B0 | kʰ      | kʰ         | NA       | consonant    | spa    | 0    | \-     | \-       | \-    | \-   | \+          | \-       | \-         | \-             | \-          | \-  | \-    | \-    | \-      | \-     | 0     | 0           | \-      | 0        | 0           | 0        | \+     | \+   | \-  | \-    | \-   | 0     | 0                   | 0                  | \-                    | \-                 | \+            | \-                 | \-     | \-                   | \-                     | \-    | Korean | kor      | language | Eurasia   |     37.5 |       128 |
-|           1 | kore1280   | kor     | Korean       | NA              | 006B+02C0 | kˀ      | kˀ         | NA       | consonant    | spa    | 0    | \-     | \-       | \-    | \-   | \+          | \-       | \-         | \-             | \-          | \-  | \-    | \-    | \-      | \-     | 0     | 0           | \-      | 0        | 0           | 0        | \+     | \+   | \-  | \-    | \-   | 0     | 0                   | 0                  | \-                    | \-                 | \-            | \+                 | \-     | \-                   | \-                     | \-    | Korean | kor      | language | Eurasia   |     37.5 |       128 |
-|           1 | kore1280   | kor     | Korean       | NA              | 006C      | l       | ɾ l lʲ     | NA       | consonant    | spa    | 0    | \-     | \-       | \-    | \-   | \+          | \+       | \+         | 0              | \+          | \-  | \-    | \-    | \+      | \-     | 0     | 0           | \+      | \+       | \-          | \-       | \-     | 0    | 0   | 0     | 0    | 0     | 0                   | 0                  | \+                    | \-                 | \-            | \-                 | \-     | \-                   | \-                     | \-    | Korean | kor      | language | Eurasia   |     37.5 |       128 |
+| InventoryID | LanguageName | Phoneme |
+|------------:|:-------------|:--------|
+|           1 | Korean       | h       |
+|           1 | Korean       | j       |
+|           1 | Korean       | k       |
+|           1 | Korean       | kʰ      |
+|           1 | Korean       | kˀ      |
+|           1 | Korean       | l       |
 
 How many inventories (data points) are there in PHOIBLE?
 
