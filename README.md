@@ -908,15 +908,17 @@ nrow(lgs_with_bdproto_bialbials) / nrow(bdproto %>% select(Glottocode) %>% filte
 
 When compared to PHOIBLE is this prevalence of languages with
 contrastive (or reconstructed) bilabial fricatives greater or less today
-than in the past? We expect that the percentage to go down, as sounds
-shift to for example labiodentals, which have a greater intensity of
-noise, i.e. (todo figure out where this passage is from!):
-
-    For example, if we compare bilabial fricatives and labiodental fricatives, the latter have much greater amplitude (40). Not only is the intensity of the noise greater, but it is also a function of frequency, with voiceless labiodental fricative [f] showing greater energy above ~2kHz (below this the spectral profile is quite similar to that of voiceless bilabial fricative [ɸ]) (41). Stevens (42) puts the first resonance at 10 kHz; resonance shaping is much less for for bilabials because there is no tube in front of the lips. This means in a situation in which bilabial and labiodental fricatives are present, the latter are more perceptually salient. Their ease of articulation in the overjet bite configuration and their perceptual salience are factors in why they tend to dominate phonological inventories cross-linguistically. Indeed, bilabial fricatives are much rarer than labiodental fricatives (voiceless and voiced bilabial fricatives [ɸ] and [β] occur in 6% and 12% in (Moran et al. 2014); [f] and [v] occur in 49% and 37%, respectively. It is also rare for languages to contrast both bilabial and labiodental fricatives (roughly 3% of languages in (Moran et al. 2014)). This may be expected because although labiodentals have greater amplitude, the acoustic differences between these pairs of fricatives is subtle phonetically. Hence other factors such as, it may also be that labiodentals are visually more salient (43) and thus play a role in transmission beyond just aurally.
+than in the past? We might expect the percentage to go down, as sounds
+shift to, for example, labiodentals (Blasi et al. 2019; Moran, Lester,
+and Grossman 2021), which have a greater intensity of noise and greater
+amplitude. (Maddieson (2005) notes, however, that the differences
+between bilabial fricatives and labiodental fricatives in the few
+languages that contrast them may not be subtle to speakers of those
+languages.)
 
 Let’s calculate phoible by ISO 639-3 language codes. PHOIBLE actually
-has a higher percentage of bilabials than in the BDPROTO study at nearly
-17%.
+has a higher percentage of bilabial fricatives than in the BDPROTO study
+at nearly 17%.
 
 ``` r
 phoible_bialbials <- phoible %>%
@@ -1096,6 +1098,15 @@ Wisconsin – Green Bay.
 
 </div>
 
+<div id="ref-Blasi_etal2019" class="csl-entry">
+
+Blasi, Damián E., Steven Moran, Scott R. Moisik, Paul Widmer, Dan Dediu,
+and Balthasar Bickel. 2019. “Human Sound Systems Are Shaped by
+Post-Neolithic Changes in Bite Configuration.” *Science* 363 (6432).
+<https://doi.org/10.1126/science.aav3218>.
+
+</div>
+
 <div id="ref-Changetal2015Ancestry-constrained" class="csl-entry">
 
 Chang, Will, Chundra Cathcart, David Hall, and Andrew Garrett. 2015.
@@ -1158,6 +1169,14 @@ Publications in Anthropology. New Haven: Yale University Press.
 
 Maddieson, Ian. 1984. *Patterns of Sounds*. Cambridge: Cambridge
 University Press.
+
+</div>
+
+<div id="ref-Maddieson2005" class="csl-entry">
+
+———. 2005. “Bilabial and Labio-Dental Fricatives in Ewe.” *UC Berkeley
+Phonology Lab Annual Report* 1 (1).
+<https://escholarship.org/uc/item/4r49g6qx>.
 
 </div>
 
